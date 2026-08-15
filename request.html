@@ -8,6 +8,7 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="icon" type="image/jpeg" href="favicon.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Big+Shoulders+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   html, body { margin: 0; background: #0C0A09; -webkit-font-smoothing: antialiased; }
@@ -87,7 +88,7 @@
         </div>
       </aside>
 
-      <form name="speaking-request" method="POST" data-netlify="true" style="display: flex; flex-direction: column; gap: 72px;">
+      <form name="speaking-request" onSubmit="{{ submit }}" style="display: flex; flex-direction: column; gap: 72px;">
         <input type="hidden" name="form-name" value="speaking-request" />
 
         <div>
@@ -155,7 +156,15 @@
 
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px 32px; border-top: 1px solid rgba(232,225,214,0.14); padding-top: 34px;">
           <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #6E675E;">Response within 2 business days</span>
-          <button type="submit" style="background: #C7433C; color: #0C0A09; border: 0; padding: 17px 42px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;" style-hover="background: #E8E1D6;">Send inquiry</button>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px;">
+            <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C7433C;">Received. Thank you.</span>
+            </sc-if>
+            <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C7433C;">{{ errorMsg }}</span>
+            </sc-if>
+            <button type="submit" style="background: #C7433C; color: #0C0A09; border: 0; padding: 17px 42px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;" style-hover="background: #E8E1D6;">{{ btnLabel }}</button>
+          </div>
         </div>
       </form>
 
@@ -190,8 +199,37 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+// Paste the Apps Script Web app URL here (see "Speaking form setup.txt").
+// Empty = the form falls back to a pre-filled email.
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycby1MTSTemcf39INIjnCkO4FZErSfUJDxcVmTLQ2CjTdlp0iPBLDxo0EZKjF62b52mgrNA/exec';
+
 class Component extends DCLogic {
-  state = { menuOpen: false, sent: false };
+  state = { menuOpen: false, status: 'idle', error: '' };
+
+  submit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fd = new FormData(form);
+    const data = {};
+    fd.forEach((v, k) => {
+      if (k === 'form-name') return;
+      data[k] = data[k] ? data[k] + ', ' + v : v;
+    });
+
+    if (!ENDPOINT) {
+      const lines = Object.keys(data).map(k => k + ': ' + data[k]).join('\n');
+      window.location.href = 'mailto:la@lawrenceadjah.com'
+        + '?subject=' + encodeURIComponent('Speaking inquiry — ' + (data.name || ''))
+        + '&body=' + encodeURIComponent(lines);
+      this.setState({ status: 'mail' });
+      return;
+    }
+
+    this.setState({ status: 'sending' });
+    fetch(ENDPOINT, { method: 'POST', body: JSON.stringify(data) })
+      .then(() => { this.setState({ status: 'sent' }); form.reset(); })
+      .catch(() => this.setState({ status: 'error', error: 'Could not send. Email la@lawrenceadjah.com directly.' }));
+  };
   componentDidMount() {
     this._k = (e) => { if (e.key === 'Escape') this.setState({ menuOpen: false }); };
     window.addEventListener('keydown', this._k);
@@ -201,7 +239,13 @@ class Component extends DCLogic {
     return {
       menuOpen: this.state.menuOpen,
       openMenu: () => this.setState({ menuOpen: true }),
-      closeMenu: () => this.setState({ menuOpen: false })
+      closeMenu: () => this.setState({ menuOpen: false }),
+      submit: this.submit,
+      sending: this.state.status === 'sending',
+      sent: this.state.status === 'sent',
+      failed: this.state.status === 'error',
+      errorMsg: this.state.error,
+      btnLabel: this.state.status === 'sending' ? 'Sending…' : 'Send inquiry'
     };
   }
 }

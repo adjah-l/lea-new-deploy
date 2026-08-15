@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/jpeg" href="favicon.jpg" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lawrence E. Adjah — Pastor · Builder · Speaker</title>
+<meta name="description" content="Pastor, builder and speaker. Building the infrastructure human belonging requires.">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
+<link rel="icon" type="image/jpeg" href="favicon.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Big+Shoulders+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <script src="./image-slot.js"></script>
 <style>
@@ -20,6 +22,48 @@
   @keyframes la-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
   @keyframes la-breath { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
   @media (prefers-reduced-motion: reduce) { .la-marquee, .la-breath { animation: none !important; } }
+
+  @media (max-width: 900px) {
+    [style*="grid-template-columns: minmax(0px, 1fr) minmax(0px, 1.15fr)"],
+    [style*="grid-template-columns: minmax(0px, 1.35fr) minmax(0px, 1fr)"],
+    [style*="grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr)"],
+    [style*="grid-template-columns: minmax(0px, 290px)"],
+    [style*="grid-template-columns: minmax(0px, 300px)"],
+    [style*="grid-template-columns: minmax(0px, 340px)"],
+    [style*="grid-template-columns: minmax(0px, 108px)"],
+    [style*="grid-template-columns: repeat(2, minmax(0px, 1fr))"],
+    [style*="grid-template-columns: repeat(3, minmax(0px, 1fr))"],
+    [style*="grid-template-columns: 56px 128px"],
+    [style*="grid-template-columns: 52px 150px"] {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+    [style*="grid-template-columns: repeat(4, minmax(0px, 1fr))"] { grid-template-columns: repeat(2, minmax(0px, 1fr)) !important; }
+    [style*="direction: rtl"] { direction: ltr !important; }
+    [style*="position: sticky"] { position: static !important; }
+    [style*="left: 40px"][style*="right: 40px"] { left: 18px !important; right: 18px !important; }
+    [style*="left: 8vw"] { left: 22px !important; right: 22px !important; top: 92px !important; bottom: 106px !important; transform: none !important; height: auto !important; align-content: center !important; }
+    [style*="padding: 190px 40px"] { padding: 128px 20px 52px !important; }
+    [style*="padding: 186px 40px"] { padding: 128px 20px 44px !important; }
+    [style*="padding: 80px 40px"], [style*="padding: 84px 40px"] { padding: 44px 20px 64px !important; }
+    [style*="padding: 72px 40px"] { padding: 40px 20px 52px !important; }
+    [style*="padding: 0px 40px"] { padding-left: 20px !important; padding-right: 20px !important; }
+    [style*="width: min(100%, 52vh)"] { width: min(64vw, 30vh) !important; }
+    [style*="right: 40px"][style*="top: 50%"] { display: none !important; }
+    [style*="bottom: 62px"] { bottom: 50px !important; }
+    .la-creds { display: none !important; }
+    .la-hero-msg { left: 22px !important; right: 22px !important; top: 92px !important; bottom: 106px !important; max-width: none !important; gap: 12px !important; justify-content: flex-end !important; overflow: hidden !important; }
+    .la-hero-msg p { font-size: 15px !important; }
+    h1 { max-width: none !important; }
+  }
+  @media (max-height: 520px) {
+    .la-hero-msg { top: 88px !important; bottom: 92px !important; gap: 8px !important; justify-content: center !important; overflow: hidden !important; }
+    .la-hero-msg h1 { font-size: 26px !important; }
+    .la-hero-msg p { font-size: 13.5px !important; line-height: 1.4 !important; display: -webkit-box !important; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  }
+  @media (max-width: 560px) {
+    [style*="grid-template-columns: repeat(4, minmax(0px, 1fr))"] { grid-template-columns: 1fr !important; }
+  }
 </style>
 </helmet>
 
@@ -32,6 +76,12 @@
         <div style="position: absolute; inset: 0; background-image: url('assets/headshot.jpg'); background-size: auto 92%; background-repeat: no-repeat; background-position: 64% 100%; -webkit-mask-image: radial-gradient(ellipse 34% 56% at 64% 56%, #000 34%, rgba(0,0,0,0.72) 64%, rgba(0,0,0,0.26) 86%, transparent 100%); mask-image: radial-gradient(ellipse 34% 56% at 64% 56%, #000 34%, rgba(0,0,0,0.72) 64%, rgba(0,0,0,0.26) 86%, transparent 100%);"></div>
       </div>
       <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,10,9,0.9) 0%, rgba(12,10,9,0.25) 16%, rgba(12,10,9,0) 40%);"></div>
+      <div class="la-hero-msg" style="position: absolute; left: 40px; bottom: 132px; max-width: 46ch; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; z-index: 4;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C;">Mission</span>
+        <h1 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: clamp(38px, 5.2vw, 86px); line-height: 0.88; color: #F4EEE4;">PASTOR, BUILDER,<br />LEADER</h1>
+        <p style="margin: 0; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.5; color: #DCD4C8;">Helping people and institutions establish and strengthen their most important relationships — with God, with other people, and with themselves, mind and body.</p>
+        <a href="about.html" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px; margin-top: 4px;">Learn more</a>
+      </div>
     </div>
   </sc-if>
 
@@ -52,7 +102,11 @@
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">#1 new release &nbsp;·&nbsp; Amazon &amp; Audible</div>
           <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 28px; max-width: 22ch;">Lawrence E. Adjah Reads the Bible</div>
           <div style="font-size: 17px; color: #B7AFA3; margin-bottom: 30px;">New International Version (NIV)</div>
-          <a href="https://www.audible.com/pd/Lawrence-E-Adjah-Reads-the-Bible-New-International-Version-NIV-Audiobook/B0DZZMLFT3" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Listen on Audible</a>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px 26px;">
+            <a href="https://www.audible.com/pd/Lawrence-E-Adjah-Reads-the-Bible-New-International-Version-NIV-Audiobook/B0DZZMLFT3" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Listen on Audible</a>
+            <a href="https://open.spotify.com/search/Lawrence%20E.%20Adjah%20Reads%20the%20Bible" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Listen on Spotify</a>
+            <a href="https://play.google.com/store/search?q=Lawrence%20E.%20Adjah%20Reads%20the%20Bible&c=audiobooks" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Listen on Google Play</a>
+          </div>
         </div>
       </div>
     </div>
@@ -92,7 +146,7 @@
       <div style="position: absolute; top: 50%; left: 8vw; right: 8vw; transform: translateY(-50%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5vw; align-items: center; direction: rtl;">
         <div style="direction: ltr; position: relative; aspect-ratio: 1 / 1; width: min(100%, 52vh); height: auto; justify-self: center; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
           <image-slot id="la-sermon" shape="rect" src="https://img.youtube.com/vi/BCUV87Zm74Q/maxresdefault.jpg" placeholder="Beacon Church sermon still, 1:1"></image-slot>
-          <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 58px; height: 58px; border: 1px solid rgba(232,225,214,0.6); border-radius: 50%; display: grid; place-items: center; color: #F4EEE4; font-size: 15px; background: rgba(12,10,9,0.35); pointer-events: none;">▶</span>
+          <a href="https://youtu.be/BCUV87Zm74Q" target="_blank" rel="noopener" aria-label="Watch the latest sermon on YouTube" style="position: absolute; inset: 0; display: grid; place-items: center;"><span style="width: 58px; height: 58px; border: 1px solid rgba(232,225,214,0.6); border-radius: 50%; display: grid; place-items: center; color: #F4EEE4; font-size: 15px; background: rgba(12,10,9,0.35);" style-hover="background: #C7433C; border-color: #C7433C; color: #0C0A09;">▶</span></a>
         </div>
         <div style="direction: ltr;">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">Latest sermon</div>
@@ -180,11 +234,11 @@
       <img src="assets/caret-paper.png" alt="Lawrence Adjah" style="height: 26px; width: auto; display: block;" />
       <span style="color: #F4EEE4;">Lawrence E. Adjah</span>
       <span style="color: #C7433C; font-size: 14px;">✝</span>
-      <span>MBA &nbsp;MEd &nbsp;MDiv</span>
+      <span class="la-creds">MBA &nbsp;MEd &nbsp;MDiv</span>
     </a>
     <div style="display: flex; align-items: center; gap: 26px;">
       <a href="request.html" style="color: inherit;">Invite</a>
-      <a href="#" style="color: #F4EEE4;">View work</a>
+      <a href="projects.html" style="color: #F4EEE4;">View work</a>
       <button type="button" onClick="{{ openMenu }}" aria-label="Menu" style="background: none; border: 0; padding: 4px 0 4px 6px; cursor: pointer; display: flex; flex-direction: column; gap: 5px;">
         <span style="display: block; width: 22px; height: 1px; background: #E8E1D6;"></span>
         <span style="display: block; width: 22px; height: 1px; background: #E8E1D6;"></span>
@@ -223,14 +277,14 @@
       <button type="button" onClick="{{ closeMenu }}" aria-label="Close" style="position: absolute; right: 40px; top: 34px; background: none; border: 0; color: #E8E1D6; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;">Close</button>
       <div style="display: grid; grid-template-columns: 46px 1fr; gap: 14px 26px; align-items: baseline;">
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #C7433C;">01</span><a href="./" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Home</a>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">02</span><a href="partner.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Projects</a>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">03</span><a href="the100marriagebook.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Books</a>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">04</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Sermons &amp; talks</a>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">05</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Media</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">02</span><a href="projects.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Projects</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">03</span><a href="books.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Books</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">04</span><a href="sermons.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Sermons &amp; talks</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">05</span><a href="media.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Media</a>
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">06</span><a href="articles.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Articles &amp; writings</a>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">07</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Press</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">07</span><a href="press.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Press</a>
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">08</span><a href="request.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Invite</a>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">09</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Speaking engagements</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">09</span><a href="speaking.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Speaking engagements</a>
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">10</span><a href="about.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">About</a>
       </div>
     </div>

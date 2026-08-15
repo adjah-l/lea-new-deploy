@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/jpeg" href="../favicon.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Settling. And Black Men. - Lawrence E. Adjah</title>
+<meta name="description" content="A challenging reflection on the concept of 'settling' in relationships and the inherent value of every human being as an image-bearer of God.">
+<link rel="stylesheet" href="https://use.typekit.net/pgv5taq.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1C1916;
+  --deep: #231F1B;
+  --gold: #6B9DAD;
+  --gold-light: #8FC1CE;
+  --cream: #FAF7F2;
+  --warm-white: #FEFDFB;
+  --mid: #847A6D;
+  --serif: 'trade-gothic-next', system-ui, sans-serif;
+  --sans: 'trade-gothic-next-compressed', sans-serif;
+  --display: 'trade-gothic-next-compressed', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--serif); background: var(--warm-white); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: rgba(254,253,251,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107,157,173,0.15);
+  transition: padding 0.3s;
+}
+.nav-logo { font-family: 'Cormorant', serif; font-size: 1.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: inherit; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; color: var(--ink); text-decoration: none; opacity: 0.65; transition: color 0.2s; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-cta { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--warm-white); background: var(--deep); text-decoration: none; padding: 0.6rem 1.4rem; border-radius: 2px; }
+
+/* ── ARTICLE HERO ── */
+#article-header {
+  padding: 14rem 4rem 6rem;
+  background: var(--deep);
+  color: #F2EBDF;
+  text-align: center;
+}
+.article-tag { font-family: var(--sans); font-size: 1rem; font-weight: 700; letter-spacing: 0.01em; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
+.article-h1 { font-family: var(--display); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 2rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.article-meta { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: rgba(242,235,223,0.5); }
+
+/* ── ARTICLE CONTENT ── */
+#article-body { padding: 8rem 4rem; background: var(--warm-white); }
+.body-inner { max-width: 800px; margin: 0 auto; }
+.editorial-content { font-size: 1.3rem; line-height: 1.8; color: var(--ink); }
+.editorial-content p { margin-bottom: 2.5rem; }
+.editorial-content h2, .editorial-content h3 { font-family: var(--serif); color: var(--deep); margin: 4rem 0 2rem; font-weight: 400; line-height: 1.2; }
+.editorial-content h2 { font-size: 2.4rem; }
+.editorial-content blockquote { border-left: 2px solid var(--gold); padding-left: 3rem; margin: 4rem 0; font-style: italic; font-size: 1.6rem; color: var(--mid); }
+.editorial-content ul { margin-bottom: 3rem; padding-left: 1.5rem; }
+.editorial-content li { margin-bottom: 1rem; }
+
+/* ── CTA SECTION ── */
+#article-footer-cta { padding: 6rem 4rem; background: var(--cream); text-align: center; border-top: 1px solid rgba(107,157,173,0.1); }
+.cta-inner { max-width: 700px; margin: 0 auto; }
+.cta-h3 { font-family: var(--display); font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem; color: var(--deep); }
+.btn-gold { display: inline-block; padding: 1.2rem 3rem; background: var(--deep); color: var(--gold); font-family: var(--sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: transform 0.3s; }
+.btn-gold:hover { transform: translateY(-2px); color: #fff; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 8rem 0 4rem; color: rgba(255,255,255,0.4); }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5rem; margin-bottom: 3rem; }
+.footer-logo { font-family: 'Cormorant', serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+.footer-logo span { color: var(--gold); }
+.footer-h { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.footer-lks { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.footer-lks a { color: inherit; text-decoration: none; transition: color 0.3s; }
+.footer-lks a:hover { color: var(--gold); }
+
+@media (max-width: 800px) {
+  #article-header { padding: 10rem 2rem 4rem; }
+  #article-body { padding: 4rem 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Lawrence <span>E.</span> Adjah</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#audiobook">Audiobook</a></li>
+    <li><a href="../index.html#start">Mission</a></li>
+    <li><a href="../index.html#building">Work</a></li>
+    <li><a href="../index.html#watchgodwork">Resources</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#invitation">Partner</a></li>
+  </ul>
+  <a href="../index.html#connect" class="nav-cta">Connect</a>
+</nav>
+
+<header id="article-header">
+  <span class="article-tag">Relationships & Identity</span>
+  <h1 class="article-h1">On Settling. And Black Men.</h1>
+  <div class="article-meta">By Lawrence E. Adjah · January 7, 2022</div>
+</header>
+
+<main id="article-body">
+  <article class="body-inner">
+    <div class="editorial-content">
+      <p>Is it settling or is it recalibrating?</p>
+      <p>This week I’ve spent the majority of my time in front a Bible, with headphones, a microphone and ginger tea (with lemon, shoutout to Doc Rivers!), recording an audiobook of the entire NIV Bible. But like anyone entrenched in Deep Work you find yourself taking breaks in the wee hours of the morning and coming across articles, interviews and commentary from the previous day. For me it wasn’t much different and a number of content pieces I came across dealt with relationships between black men and black women.</p>
+      <p>Because I love us and have always been committed to helping people strengthen their most important relationships (with God and each other), I hopped into a few unique discussions posted by friends / sites on my feed dealing with the issue of being a housewife and the other about women desiring financially stable men. I happened to share my brief perspectives on the two topics in my current Instagram stories and was flooded with DM’s from the fam replying, 95% in full emoji-laden agreement and a few who were mostly in sync but had questions about the topic in general.</p>
+      <p>They were from three amazing sisters who I appreciate, love and trust, who shared their fear, discomfort with the concept of “settling” and feeling they shouldn’t have to “settle” in their desires for men. (Note: I did not bring this concept up, but it was drawn from the posts I responded to).</p>
+      <p>Though I’ve spoken to this on a few platforms, at length, including on “Agree II Disagree” with my sister Dalourny, I think it’s a perspective that’s worth revisiting here:</p>
+      <p>Let me begin by sharing, admittedly, anytime I hear someone use the word “settling” in speaking about being with another human being made in the image of God, whom they did not die for, nor could they ever earn, it is challenging to me. Very, very, challenging.</p>
+      <p>With that said, it underscores my point about the disconnect between black men and women when it comes to relationships, specifically about black women not knowing black men very well given nearly 80% of brothers and sisters today were brought up in homes with women as the sole authority, decision-maker and steward of love in the home, which means, we’ve all learned how to interact with women in this role, very few have been in an intimate formative setting with a man in loving authority at home, to learn the nature of men, especially ones they respect, who wield both love, divine authority and covering over a wife and family.</p>
+      <p>Because of this disconnect, I usually follow-up the “settling” statement with two sobering, “uncomfortable truth,” questions to those who speak about “settling” for the opposite sex:</p>
+      <ul>
+        <li>Have you ever considered that the men you believe you “deserve” agree with you?</li>
+        <li>Have you considered that the reason those men you prefer and believe you “deserve” haven’t chosen you is because to them, being with you would be “settling” to them?</li>
+      </ul>
+      <p>Now, hold these questions for a moment… if these questions are triggering to you, perhaps, you now understand how the “settling” discussion often lands on men.</p>
+      <p>The reason this question isn’t really engaged for <em>some</em> women is because many have been conditioned to be primarily focused on themselves, and unconsciously see men as utilities; not leaders of mission who they were designed and purposed to come alongside to help, but rather, more as facilitators of their dreams, career goals and lifestyle desires, aka “what they want” “their standards” or “what they ‘deserve’” never giving much thought to how they are actually and uniquely going to be a help(mate) (Genesis 2:18) to the type of man they would like, based on standards <em>men divinely care about.</em></p>
+      <p>They often cannot define what being a helpmate is that is separate and distinct from what the man’s role is so it’s often not a priority to understand what he values and look to meet it. Here’s the thing: it’s neither intentional or malicious, it’s a product of our most formative environments (family) and our culture. The point is it requires knowing men (beyond the theoretical) and actually listening to them vs. dismissing them.</p>
+      <p>Furthermore, we too often, conflate our value to God, with our value in the dating market. We don’t tell our employers we are children of God and are perfect and that’s why they should hire us. There are few things more destructive to a person’s faith than placing their identity and value in anything beyond Christ, including, but not limited to the spouse they believe they are entitled to. This makes anyone’s questions of whether one’s desires are realistic or equitable seem like an attack on one’s worth and personhood.</p>
+      <p>Yes, marriage is a uniquely powerful gospel display as a type and shadow of Christ and the Church… still, it’s an institution of mission and an act of worship between human beings, and if it’s all gospel, all it should require is finding another Christian, and that’s it (no preferences), because once you introduce preferences, it’s no longer a pure gospel since God only asks us to accept Him in faith, then we are accepted by God, no more hoops to jump through.</p>
+      <p>Furthermore, we are not all entitled to a spouse, nor do we all get a spouse. It is neither the call for all of us, nor is it the reality by pure numbers, even when you consider numbers across races of men and women. On top of that, if we are so fortunate to find or be found by someone, it is a <em>gift from God</em> not a reward we are entitled to or “deserve.”</p>
+      <p>Thus, we have to take a sobering look at ourselves and challenge ourselves to seek to understand the needs / desires of the other sex from a Godly lens and actually do our best to prepare ourselves for meeting them, if we are to put ourselves in the best position to have one.</p>
+      <blockquote>
+        "Once upon a time there was a beautiful $450,000 house in a great neighborhood that the owner put on the market to be sold. It had been appraised by the market at that amount and was overwhelmed by interested buyers. Yet, the owner believed the house was worth much more, $4M to be exact... Soon the owner grows frustrated with the city, and begins to blame the market for their inability to sell their home, rather than the price they were putting the house for on the market."
+      </blockquote>
+      <p>I know most people never believe their own standards are out of sync (haven’t met them yet). But the point of the imperfect illustration is to say, there’s a difference between someone asking you to be with someone who does not love God (as in Jesus, the Christ) nor you and is a danger to your faith, and someone who may not be what you felt you “deserved” or always desired but who you match with and need.</p>
+      <p>If having someone make your empty and available house a home is that important to you, you should differentiate between offers where you’re being asked to lose your money and the offers where you’re being asked to lose your pride.</p>
+    </div>
+  </article>
+</main>
+
+<section id="article-footer-cta">
+  <div class="cta-inner">
+    <h3 class="cta-h3">Building the infrastructure human belonging requires.</h3>
+    <a href="../request.html" class="btn-gold">Work With Lawrence</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Lawrence E. <span>Adjah</span></div>
+        <p>Building the infrastructure human belonging requires.</p>
+      </div>
+      <div>
+        <div class="footer-h">The Work</div>
+        <ul class="footer-lks">
+          <li><a href="https://ourfamilydinner.org" target="_blank">Family Dinner Foundation</a></li>
+          <li><a href="https://itoro-app.com" target="_blank">iToro</a></li>
+          <li><a href="https://mbio.ourfamilydinner.org" target="_blank">mbio</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Engage</div>
+        <ul class="footer-lks">
+          <li><a href="../request.html">Speaking</a></li>
+          <li><a href="mailto:la@lawrenceadjah.com">Partnerships</a></li>
+          <li><a href="../index.html#connect">Connect</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Resources</div>
+        <ul class="footer-lks">
+          <li><a href="../index.html#audiobook">NIV Audiobook</a></li>
+          <li><a href="../the100marriagebook.html">The 100 Marriage</a></li>
+          <li><a href="../articles.html">Articles</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Lawrence E. Adjah. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = window.scrollY > 60 ? '0.85rem 4rem' : '1.4rem 4rem';
+  });
+</script>
+</body>
+</html>

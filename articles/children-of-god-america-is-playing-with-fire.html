@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/jpeg" href="../favicon.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Children of God, America is Playing with Fire - Lawrence E. Adjah</title>
+<meta name="description" content="A reflection on the current state of our nation, our identity as salt and light, and practical ways to move in godliness during volatile times.">
+<link rel="stylesheet" href="https://use.typekit.net/pgv5taq.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1C1916;
+  --deep: #231F1B;
+  --gold: #6B9DAD;
+  --gold-light: #8FC1CE;
+  --cream: #FAF7F2;
+  --warm-white: #FEFDFB;
+  --mid: #847A6D;
+  --serif: 'trade-gothic-next', system-ui, sans-serif;
+  --sans: 'trade-gothic-next-compressed', sans-serif;
+  --display: 'trade-gothic-next-compressed', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--serif); background: var(--warm-white); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: rgba(254,253,251,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107,157,173,0.15);
+  transition: padding 0.3s;
+}
+.nav-logo { font-family: 'Cormorant', serif; font-size: 1.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: inherit; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; color: var(--ink); text-decoration: none; opacity: 0.65; transition: color 0.2s; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-cta { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--warm-white); background: var(--deep); text-decoration: none; padding: 0.6rem 1.4rem; border-radius: 2px; }
+
+/* ── ARTICLE HERO ── */
+#article-header {
+  padding: 14rem 4rem 6rem;
+  background: var(--deep);
+  color: #F2EBDF;
+  text-align: center;
+}
+.article-tag { font-family: var(--sans); font-size: 1rem; font-weight: 700; letter-spacing: 0.01em; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
+.article-h1 { font-family: var(--display); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 2rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.article-meta { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: rgba(242,235,223,0.5); }
+
+/* ── ARTICLE CONTENT ── */
+#article-body { padding: 8rem 4rem; background: var(--warm-white); }
+.body-inner { max-width: 800px; margin: 0 auto; }
+.editorial-content { font-size: 1.3rem; line-height: 1.8; color: var(--ink); }
+.editorial-content p { margin-bottom: 2.5rem; }
+.editorial-content h2, .editorial-content h3 { font-family: var(--serif); color: var(--deep); margin: 4rem 0 2rem; font-weight: 400; line-height: 1.2; }
+.editorial-content h2 { font-size: 2.4rem; }
+.editorial-content blockquote { border-left: 2px solid var(--gold); padding-left: 3rem; margin: 4rem 0; font-style: italic; font-size: 1.6rem; color: var(--mid); }
+.editorial-content ul { margin-bottom: 3rem; padding-left: 1.5rem; }
+.editorial-content li { margin-bottom: 1.5rem; }
+
+/* ── CTA SECTION ── */
+#article-footer-cta { padding: 6rem 4rem; background: var(--cream); text-align: center; border-top: 1px solid rgba(107,157,173,0.1); }
+.cta-inner { max-width: 700px; margin: 0 auto; }
+.cta-h3 { font-family: var(--display); font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem; color: var(--deep); }
+.btn-gold { display: inline-block; padding: 1.2rem 3rem; background: var(--deep); color: var(--gold); font-family: var(--sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: transform 0.3s; }
+.btn-gold:hover { transform: translateY(-2px); color: #fff; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 8rem 0 4rem; color: rgba(255,255,255,0.4); }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5rem; margin-bottom: 3rem; }
+.footer-logo { font-family: 'Cormorant', serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+.footer-logo span { color: var(--gold); }
+.footer-h { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.footer-lks { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.footer-lks a { color: inherit; text-decoration: none; transition: color 0.3s; }
+.footer-lks a:hover { color: var(--gold); }
+
+@media (max-width: 800px) {
+  #article-header { padding: 10rem 2rem 4rem; }
+  #article-body { padding: 4rem 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Lawrence <span>E.</span> Adjah</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#audiobook">Audiobook</a></li>
+    <li><a href="../index.html#start">Mission</a></li>
+    <li><a href="../index.html#building">Work</a></li>
+    <li><a href="../index.html#watchgodwork">Resources</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#invitation">Partner</a></li>
+  </ul>
+  <a href="../index.html#connect" class="nav-cta">Connect</a>
+</nav>
+
+<header id="article-header">
+  <span class="article-tag">Faith & Culture</span>
+  <h1 class="article-h1">Children of God, America is Playing with Fire.</h1>
+  <div class="article-meta">By Lawrence E. Adjah · July 15, 2024</div>
+</header>
+
+<main id="article-body">
+  <article class="body-inner">
+    <div class="editorial-content">
+      <p>Children of God, America is playing with fire. All it takes is a single spark to burn down an entire forest.</p>
+      <p>And the danger is not so much in the initial spark, but in the subsequent firestorm which ensues when the spark is not contained. As it is with nature, so it is with human nature.</p>
+      <p>America is playing with fire and it's not only our nation which is the forest; it’s also the world.</p>
+      <p>In the Gospel of Matthew, Jesus calls the children of God the salt of the earth (Matt 5:13). To be the salt of the earth is to be those who slow down the decay and destruction of the very place you (and I) were called to be in, but not of.</p>
+      <p>Being salt also means to be the very means of extinguishing fires, particularly small ones, because salt has a unique ability to form a barrier between the fire and the air, preventing it from getting the oxygen it needs to grow.</p>
+      <blockquote>"However, if “the salt” forgets its identity, aka when it loses its saltiness and distinctiveness, it can render itself useless, or worse, take on the nature of the very thing it was sent to preserve."</blockquote>
+      <p>Children of God, have you forgotten who you are? You are not a passive bystander, you are not an instigating participant, you are an agent and an ambassador of the Most High God.</p>
+      <p>In the same book of Matthew, Jesus, a few verses earlier, says, “Blessed are the peacemakers, for they will be called children of God.” (Matt 5:9)</p>
+      <p>If peacemaking, at this moment in history, were the qualifications to be called children of God, would He be calling you?</p>
+      <p>We, as a country, are in a deeply vulnerable state of affairs. Right now, this moment is calling for the children of God to be the ambassadors of godliness, but the question is, will you, will I, will we, answer the call?</p>
+      <p>Did you know in Genesis, before God even creates and places us in the world, He brings order to the world? Godliness brings order out of chaos, light out of darkness, and hope out of despair. Godliness breathes the harmony of Eden into the airwaves, vessels, and fiery conclaves of hell.</p>
+      <p>Where there is death, godliness speaks life.<br>
+      Where there is war, godliness speaks peace.<br>
+      Where there is uncertainty, godliness speaks clarity.<br>
+      Where there is division, godliness speaks unity (and justice).</p>
+      <p>Children of God, America is playing with fire. And smoke is bellowing from her embers. But the good news is, even amongst its flames, God has the power to speak through the burning bush without anyone or anything else burning and being consumed by it altogether.</p>
+      <p>Children of God, America is playing with fire. Will you be consumed by it, or will you be compelled (to godliness) by it? May we be compelled to not be consumed. In Jesus’ Name we pray, Amen and Amen.</p>
+
+      <h3>5 Practical Ways to Move in Godliness at This Time:</h3>
+      <ul>
+        <li><strong>Pray for Your Leaders:</strong> Including Yourself & Others (Given your sphere of influence, digitally and in real life). “First of all, then, I urge that supplications, prayers, intercessions, and thanksgivings be made for all people, for kings and all who are in high positions, that we may lead a peaceful and quiet life, godly and dignified in every way.” (1 Timothy 2:1-4)</li>
+        <li><strong>How to Speak Life:</strong> “Where there is death, godliness speaks life.” Honor lives preserved and lives lost with our words - regardless of who they are. The people of life do not celebrate, sell, or exploit death of any kind, especially at the end of violence. The power of life and death is in the tongue; those who love it will surely enjoy its fruit (Proverbs 18:21). <em>Struggling to do it?</em> What you speak comes out of what you consume; consider a fast from partisan media and social media, and consider an exclusive reading of Scripture this week.</li>
+        <li><strong>How to Speak Peace:</strong> “Where there is war, godliness speaks peace.” Peacemakers are not merely peaceful themselves but are agents of peace in their communities and relationships. They work towards reconciliation, understanding, and harmony. <em>Option:</em> Gather with a friend, or gather a group for lunch, dinner, prayer, or a workout, simply to fellowship, without political discussion unless for prayer.</li>
+        <li><strong>How to Speak with Clarity:</strong> “Where there is uncertainty, godliness speaks clarity.” Consider fasting to hear from God this week. From Bullet #2: What you speak comes out of what you consume; consider a fast from partisan media, social media, and consider an exclusive reading of Scripture this week.</li>
+        <li><strong>How to Foster Unity (and Justice):</strong> “Where there is division, godliness speaks unity (and justice).” At a minimum, godliness does not sow, encourage, or accelerate division. It is not oil on the fire. It speaks to the common good of all, not simply the good of “my own” but all of God’s own.</li>
+      </ul>
+    </div>
+  </article>
+</main>
+
+<section id="article-footer-cta">
+  <div class="cta-inner">
+    <h3 class="cta-h3">Building the infrastructure human belonging requires.</h3>
+    <a href="../request.html" class="btn-gold">Work With Lawrence</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Lawrence E. <span>Adjah</span></div>
+        <p>Building the infrastructure human belonging requires.</p>
+      </div>
+      <div>
+        <div class="footer-h">The Work</div>
+        <ul class="footer-lks">
+          <li><a href="https://ourfamilydinner.org" target="_blank">Family Dinner Foundation</a></li>
+          <li><a href="https://itoro-app.com" target="_blank">iToro</a></li>
+          <li><a href="https://mbio.ourfamilydinner.org" target="_blank">mbio</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Engage</div>
+        <ul class="footer-lks">
+          <li><a href="../request.html">Speaking</a></li>
+          <li><a href="mailto:la@lawrenceadjah.com">Partnerships</a></li>
+          <li><a href="../index.html#connect">Connect</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Connect</div>
+        <ul class="footer-lks">
+          <li><a href="https://www.linkedin.com/in/lawrenceadjah/" target="_blank">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/adjah_l/" target="_blank">Instagram</a></li>
+          <li><a href="https://twitter.com/adjah_l" target="_blank">Twitter / X</a></li>
+          <li><a href="https://www.youtube.com/@LawrenceAdjah" target="_blank">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Resources</div>
+        <ul class="footer-lks">
+          <li><a href="../index.html#audiobook">NIV Audiobook</a></li>
+          <li><a href="../the100marriagebook.html">The 100 Marriage</a></li>
+          <li><a href="../articles.html">Articles</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Lawrence E. Adjah. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = window.scrollY > 60 ? '0.85rem 4rem' : '1.4rem 4rem';
+  });
+</script>
+</body>
+</html>

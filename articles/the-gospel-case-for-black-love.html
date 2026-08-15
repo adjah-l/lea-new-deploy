@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/jpeg" href="../favicon.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gospel Case for Black Love - Lawrence E. Adjah</title>
+<meta name="description" content="A gospel-centered discussion on the redemptive power and spiritual significance of Black Love in a world of racial division.">
+<link rel="stylesheet" href="https://use.typekit.net/pgv5taq.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1C1916;
+  --deep: #231F1B;
+  --gold: #6B9DAD;
+  --gold-light: #8FC1CE;
+  --cream: #FAF7F2;
+  --warm-white: #FEFDFB;
+  --mid: #847A6D;
+  --serif: 'trade-gothic-next', system-ui, sans-serif;
+  --sans: 'trade-gothic-next-compressed', sans-serif;
+  --display: 'trade-gothic-next-compressed', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--serif); background: var(--warm-white); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: rgba(254,253,251,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107,157,173,0.15);
+  transition: padding 0.3s;
+}
+.nav-logo { font-family: 'Cormorant', serif; font-size: 1.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: inherit; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; color: var(--ink); text-decoration: none; opacity: 0.65; transition: color 0.2s; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-cta { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--warm-white); background: var(--deep); text-decoration: none; padding: 0.6rem 1.4rem; border-radius: 2px; }
+
+/* ── ARTICLE HERO ── */
+#article-header {
+  padding: 14rem 4rem 6rem;
+  background: var(--deep);
+  color: #F2EBDF;
+  text-align: center;
+}
+.article-tag { font-family: var(--sans); font-size: 1rem; font-weight: 700; letter-spacing: 0.01em; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
+.article-h1 { font-family: var(--display); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 2rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.article-meta { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: rgba(242,235,223,0.5); }
+
+/* ── ARTICLE CONTENT ── */
+#article-body { padding: 8rem 4rem; background: var(--warm-white); }
+.body-inner { max-width: 800px; margin: 0 auto; }
+.editorial-content { font-size: 1.3rem; line-height: 1.8; color: var(--ink); }
+.editorial-content p { margin-bottom: 2.5rem; }
+.editorial-content h2, .editorial-content h3 { font-family: var(--serif); color: var(--deep); margin: 4rem 0 2rem; font-weight: 400; line-height: 1.2; }
+.editorial-content h2 { font-size: 2.4rem; }
+.editorial-content blockquote { border-left: 2px solid var(--gold); padding-left: 3rem; margin: 4rem 0; font-style: italic; font-size: 1.6rem; color: var(--mid); }
+.editorial-content ul { margin-bottom: 3rem; padding-left: 1.5rem; list-style: none; }
+.editorial-content li { margin-bottom: 1.5rem; position: relative; padding-left: 2rem; }
+.editorial-content li::before { content: '-'; position: absolute; left: 0; color: var(--gold); }
+
+/* ── CTA SECTION ── */
+#article-footer-cta { padding: 6rem 4rem; background: var(--cream); text-align: center; border-top: 1px solid rgba(107,157,173,0.1); }
+.cta-inner { max-width: 700px; margin: 0 auto; }
+.cta-h3 { font-family: var(--display); font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem; color: var(--deep); }
+.btn-gold { display: inline-block; padding: 1.2rem 3rem; background: var(--deep); color: var(--gold); font-family: var(--sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: transform 0.3s; }
+.btn-gold:hover { transform: translateY(-2px); color: #fff; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 8rem 0 4rem; color: rgba(255,255,255,0.4); }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5rem; margin-bottom: 3rem; }
+.footer-logo { font-family: 'Cormorant', serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+.footer-logo span { color: var(--gold); }
+.footer-h { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.footer-lks { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.footer-lks a { color: inherit; text-decoration: none; transition: color 0.3s; }
+.footer-lks a:hover { color: var(--gold); }
+
+@media (max-width: 800px) {
+  #article-header { padding: 10rem 2rem 4rem; }
+  #article-body { padding: 4rem 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Lawrence <span>E.</span> Adjah</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#audiobook">Audiobook</a></li>
+    <li><a href="../index.html#start">Mission</a></li>
+    <li><a href="../index.html#building">Work</a></li>
+    <li><a href="../index.html#watchgodwork">Resources</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#invitation">Partner</a></li>
+  </ul>
+  <a href="../index.html#connect" class="nav-cta">Connect</a>
+</nav>
+
+<header id="article-header">
+  <span class="article-tag">Faith & Relationships</span>
+  <h1 class="article-h1">The Gospel Case for Black Love.</h1>
+  <div class="article-meta">By Lawrence E. Adjah · February 15, 2022</div>
+</header>
+
+<main id="article-body">
+  <article class="body-inner">
+    <div class="editorial-content">
+      <p>Family, do me a favor: Type in Google, “Black Man and Black Woman in Love” and go to “Images”…</p>
+      <p>…Do you notice anything? Scroll down a bit more. See it now? Now go to the search results… Interesting isn’t it.</p>
+      <p>Now that we’ve established a shared foundation and have gotten that out of the way, I’d like to introduce myself, my name is Lawrence Adjah and I believe in the redemptive place and power of Black Love.</p>
+      <p>Family, if you know me in real life and from everything I’ve written and spoken about publicly, you know I am a big, “celebrate God glorifying Kingdom Love” brother. To find someone, of any race, to do life with, is a gift from God. A divine gift from on High, one you could not earn, deserve or privy yourself to outside of the radical favor of God upon your life.</p>
+      <p>In the same breath, I’m also here to say, I believe it is just as much “good news” and redemptive kingdom love to see married #blacklove couples together (in the face of a fallen world which has stoked enmity between them) as it is to see barrier breaking interracial couples (in a world which has distorted our view of image bearers to the extent that the blood of Jesus has systematically and individually been subjugated to the color of one’s skin).</p>
+      <blockquote>"I believe the redemptive power of black love points us to the good news, of Jesus Christ, whose life, death and resurrection narrates an eternal love story of restoration, healing, and reconciliation."</blockquote>
+      <p>For me personally, throughout my life I’ve been uniquely drawn to the unique gospel illustration of enduring black love. And most black men and women are, statistically, as nearly 90% of both black men and black women marry each other, even when you toggle for income levels. With that said, I’ve observed the conversations around God-inspired barrier breaking relationships and redemption often intuitively cites interracial relationships as its sole evidence, but rarely have I seen there be a gospel-centered discussion around the redemptive power of black love. It’s as though we forget the picture in Revelation 7:9 about “every tongue and tribe” means there are still distinct tongues, tribes and nations praising before the King of Kings when He returns.</p>
+      <p>And it makes complete sense because one, racial division as a challenge in society has been at the forefront of our civil discourse and two, because as noted, statistically, there really isn’t a black love issue (if you define black love as marriage rates between black men and women). However, as evidenced by the google search from above, if you let broadcast, print, the web and social media tell it, you would believe the exact opposite.</p>
+      <p>Which is partly why I am writing this to begin with. I wasn’t planning on writing this today, in fact, there was another letter I wanted to write about love this week, but in a “deep work” break I happened to go on Instagram for a second and right when I opened the app I see a post from Van Lathan and Rachel Lindsay, regarding interracial relationships, which posed the question: <em>Does your opinion of a Black man change when you see him with a white woman? Is this toxic? Is it just how things are? Should we change?</em></p>
+      <p>I was curious to hear Rachel’s perspective as a black woman married to a white man, but like most of you, I wanted to read the comments to get a temperature check on where we are on the topic. I came across one from a sister which sparked me writing this after she shared the following: <em>“Yes it does and always will. A black man choosing a white woman is not the same as a black woman choosing a man outside of her race. Black women prefer black men but accept men of other races to survive. Check the statistics of divorce and fatherless children. The divorce rate for black men and other races do not improve but they sure do for black women and that’s just a fact.”</em> - @tiffaniielle</p>
+      <p>While I recognize the first sentence as being a common sentiment, what really drove this piece is the second sentence. Let me make this plain: Given what’s at stake, I take our dialogue around this subject seriously, as such, it is my prayer in the year of our Lord 2022, that all the non-empirically based talking points, tropes and logically inconsistent narratives used to stoke enmity between black men and women will perish like Nature’s Valley granola bars in the hands of all who seek truth.</p>
+      <p>Now, I have been open about sharing it is my plan to love and marry a black woman (aka a woman of the African diaspora), and as much as it is driven by my natural attraction to black women, as well as the redemptive mission I’ve been most drawn to in marriage, it is also about me exercising my political agency to choose a black woman, even though as it is the case for many black women, the option to choose a spouse from another race (by grace) is possible and present.</p>
+      <p>With that said, if you are one who finds yourself in the cognitive milieu of “looking down” upon black men who marry white women (not to be confused with championing black love), then you must keep the same energy with black women marrying white men. This is where the spiritual forces of evil around this issue find its resting space, capitalizing upon the systematic and interpersonal trauma levied against black men and women. What’s resulted is hurting women and men portraying the extremes at the center.</p>
+      <p>I plan to put the myths which feed this view to rest below, but before I do, here is the reality (please read slowly and with grace, assuming the best with my words): *Some sisters* have been conditioned to believe, unconsciously, black men do not love you. Black men will leave you (abandonment, from Father to relationships). Black men will abuse you. Black men are not trustworthy or reliable. In contrast, they have been conditioned to believe (unconsciously) white men are stable. White men are safe. White men embody redemption of being unloved, because black men didn’t and don’t (or didn’t) love (me/) us. There is more preparing for the worst than there is believing the best in black men and it’s soberingly sad.</p>
+      <p>*Some* will project their personal experiences (overlooking their own agency, realistic access to men as well as their own fallibility, and capacity to inflict harm) and will use it to color all black men and justify tropes like this. So naturally when they see black men with white women, it’s the great betrayal. But when they see black women with white men, it’s portrayed as the great redemptive love story (“she will be loved, finally she is seen and appreciated and loved” akin to a white knight in shining armor), it’s the liberation of her mating pool, despite statistics affirming black men and women are equally loyal in marriage to each other, which is why you see the stark difference in how brothers and sisters engage with stories about celebrity marriages of black women and white men and celebrity marriages of black men and white women.</p>
+      <p>This is important to discuss because it’s why black men and women loving each other and content attesting to the same is so powerful, because there is a lot betting against us being together. It is as much a spiritual matter as it is a social, political and economic matter.</p>
+      <h3>Redeeming the Lies</h3>
+      <p>And just as Jesus is (The Way), the Truth (and the Life), the only way we can find redemption is through the Truth about Black Love, which means redeeming lies like:</p>
+      <ul>
+        <li><strong>The problem is: Black Men Being With/ Marrying White Women:</strong> 88% of black men of all education and income levels marry black wives. Black men since slavery have had to endure seeing their black women with white men (by force) taken from them by white men with power and means, while also being intentionally emasculated and castrated physically and economically in front of black women then and over time. It’s all to say black men have had to see their black women with white men, even if secretively, since time in memorium, but the trope is black men being with white women is the sole original sin.</li>
+        <li><strong>The problem is: There are no “marriageable” black men:</strong> Women across *all* races outpace and outnumber their male counterparts in the pursuit of / enrollment in higher education, yet marriage rates remain high among them except for us. Furthermore, while black women are more likely to graduate from college, black men still out-earn black women, at all levels, more earn at least $75K per year and once you cross $250K, double the black men earn that than black women, which means, there are more than enough financially stable men for black women, assuming one defines financially secure this way, which is most.</li>
+        <li><strong>The problem of Fatherlessness:</strong> To our sisters point about Fatherlessness, it is an issue we must acknowledge, but we can’t assume divorce or a man not being in the home is only as a result of a broken man, forgetting that women are equally fallible in contributing to relationships failing. Women and men commit adultery at comparable rates ~20% pushing down the trope of the lone cheating black male destroying relationships.</li>
+      </ul>
+      <p>The fact that these beliefs have persisted for so long in the face of empirical fact underscores the reality of spiritual warfare, where truth is denied at all costs. But the costs are way too high. It’s costing our families, our communities and our collective well-being and we cannot move in this way any longer. I’ve heard it’s been said that information does not change people, inspiration does. While I recognize that this information will not change (all) hearts, I believe the redemptive power of black love points us to the good news, of Jesus Christ, whose life, death and resurrection narrates an eternal love story of restoration, healing, and reconciliation between us for all…including black men and women.</p>
+      <p>May it be so and so shall it be.</p>
+    </div>
+  </article>
+</main>
+
+<section id="article-footer-cta">
+  <div class="cta-inner">
+    <h3 class="cta-h3">Building the infrastructure human belonging requires.</h3>
+    <a href="../request.html" class="btn-gold">Work With Lawrence</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Lawrence E. <span>Adjah</span></div>
+        <p>Building the infrastructure human belonging requires.</p>
+      </div>
+      <div>
+        <div class="footer-h">The Work</div>
+        <ul class="footer-lks">
+          <li><a href="https://ourfamilydinner.org" target="_blank">Family Dinner Foundation</a></li>
+          <li><a href="https://itoro-app.com" target="_blank">iToro</a></li>
+          <li><a href="https://mbio.ourfamilydinner.org" target="_blank">mbio</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Engage</div>
+        <ul class="footer-lks">
+          <li><a href="../request.html">Speaking</a></li>
+          <li><a href="mailto:la@lawrenceadjah.com">Partnerships</a></li>
+          <li><a href="../index.html#connect">Connect</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Resources</div>
+        <ul class="footer-lks">
+          <li><a href="../index.html#audiobook">NIV Audiobook</a></li>
+          <li><a href="../the100marriagebook.html">The 100 Marriage</a></li>
+          <li><a href="../articles.html">Articles</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Lawrence E. Adjah. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = window.scrollY > 60 ? '0.85rem 4rem' : '1.4rem 4rem';
+  });
+</script>
+</body>
+</html>

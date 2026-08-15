@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Big+Shoulders+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  html, body { margin: 0; background: #0C0A09; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #C7433C; color: #0C0A09; }
+  a { color: #E8E1D6; text-decoration: none; }
+  a:hover { color: #C7433C; }
+  @keyframes la-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes la-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  @media (prefers-reduced-motion: reduce) { .la-marquee { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="background: #0C0A09; color: #E8E1D6; font-family: 'Schibsted Grotesk', 'Helvetica Neue', sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh; padding-bottom: 52px;">
+
+  <div style="position: fixed; left: 40px; right: 40px; top: 34px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8279; z-index: 20;">
+    <a href="index.html" style="display: flex; align-items: center; gap: 14px; color: inherit;">
+      <img src="assets/caret-paper.png" alt="Lawrence E. Adjah" style="height: 26px; width: auto; display: block;" />
+      <span style="color: #F4EEE4;">Lawrence E. Adjah</span>
+      <span style="color: #C7433C; font-size: 14px;">✝</span>
+      <span>MBA &nbsp;MEd &nbsp;MDiv</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 26px;">
+      <a href="request.html" style="color: inherit;">Invite</a>
+      <a href="#" style="color: #F4EEE4;">View work</a>
+      <button type="button" onClick="{{ openMenu }}" aria-label="Menu" style="background: none; border: 0; padding: 4px 0 4px 6px; cursor: pointer; display: flex; flex-direction: column; gap: 5px;">
+        <span style="display: block; width: 22px; height: 1px; background: #E8E1D6;"></span>
+        <span style="display: block; width: 22px; height: 1px; background: #E8E1D6;"></span>
+      </button>
+    </div>
+  </div>
+
+  <section style="padding: 190px 40px 80px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 42px;">About</div>
+      <h1 style="margin: 0 0 40px; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: clamp(44px, 7.6vw, 122px); line-height: 0.86; color: #F4EEE4;">LAWRENCE E. ADJAH</h1>
+      <div style="height: 1px; background: rgba(232,225,214,0.16); margin-bottom: 36px;"></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 72px; align-items: start;">
+        <p style="margin: 0; font-size: clamp(19px, 1.9vw, 26px); line-height: 1.45; color: #DCD4C8; max-width: 48ch;">Community leader, social entrepreneur, and ordained minister whose work sits at the intersection of relational health, social infrastructure, faith, and community innovation.</p>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8A8279; display: flex; flex-direction: column; gap: 12px;">
+          <span>Dallas, TX, USA</span>
+          <a href="assets/lawrence-adjah-bio.pdf" download="Lawrence E. Adjah — Bio.pdf" style="color: #F4EEE4;">Download bio ↓</a>
+          <a href="mailto:la@lawrenceadjah.com" style="color: #F4EEE4;">la@lawrenceadjah.com</a>
+          <a href="tel:2125183324" style="color: #F4EEE4;">212.518.3324</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0 40px 96px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 80px; align-items: start;">
+      <div style="position: sticky; top: 130px; display: flex; flex-direction: column; gap: 18px;">
+        <div style="aspect-ratio: 4 / 5; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
+          <image-slot id="la-about-portrait" shape="rect" src="assets/headshot.jpg" placeholder="Portrait, 4:5"></image-slot>
+        </div>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #6E675E;">Primary portrait</span>
+      </div>
+
+      <div style="max-width: 68ch; display: flex; flex-direction: column; gap: 30px; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.72; color: #D8D0C4;">
+        <p style="margin: 0;">Lawrence E. Adjah, MBA, M.Ed, M.Div., is a community leader, social entrepreneur, and ordained minister whose work sits at the intersection of relational health, social infrastructure, faith, and community innovation. He is the Founder and CEO of the Family Dinner Foundation, where he built one of the world's largest belonging and relational wellness initiatives, connecting more than 50,000 young adults across 40 cities through scalable models of shared meals, small-group formation, and mutual care.</p>
+        <p style="margin: 0;">A Presidential Leadership Scholar (2024), former McKinsey consultant, and All-American track and field athlete, Lawrence holds degrees from Harvard, Stanford Graduate School of Business, UT Austin, and Gordon-Conwell Theological Seminary. His perspective is shaped by a rare blend of insight: he sees people like a pastor, valuing their humanity before their utility; he sees systems and problems like a strategy consultant, structured, analytical, and solutions-oriented; and he sees opportunities like an entrepreneur and investor, courageous, adaptive, and driven by possibility.</p>
+        <p style="margin: 0;">Lawrence brings together theological depth, business strategy, and cross-sector fluency to address loneliness and social fragmentation at scale. His 5C Mutual Care Framework © provides a replicable blueprint for relational ecosystems across cities, health systems, universities, corporations, churches, and neighborhoods. He is also a best-selling author, seasoned marriage counselor, Bible narrator (NIV), and global speaker and host whose work through the Just Heal, Bro tour and other platforms has served thousands worldwide.</p>
+        <p style="margin: 0;">A trusted leader of leaders across business, ministry, and the nonprofit sector, Lawrence is known for uniting systems-level strategy with theological and relational insight, combining the business acumen of a CEO with the interpersonal wisdom of a pastor. His work strengthens individuals just as effectively as it strengthens communities and institutions for the common good.</p>
+
+        <div style="border-top: 1px solid rgba(232,225,214,0.14); padding-top: 28px; margin-top: 6px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #C7433C; margin-bottom: 14px;">Featured in</div>
+          <p style="margin: 0; color: #B7AFA3;">Ebony, Black Enterprise, Essence, Chicago Tribune, Miami Tribune, and nationally syndicated outlets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0 40px 110px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 64px;">
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C7433C; padding-bottom: 14px; border-bottom: 1px solid rgba(232,225,214,0.16);">Education</div>
+        <div style="display: grid; grid-template-columns: 1fr;">
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">B.A., Harvard</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">MBA, Stanford Graduate School of Business</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">M.Ed, The University of Texas at Austin, with distinction</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">M.Div, Gordon-Conwell Theological Seminary — Preaching Award, John D. Tate Award</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C7433C; padding-bottom: 14px; border-bottom: 1px solid rgba(232,225,214,0.16);">Boards &amp; service</div>
+        <div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">Advisory Board Member and President Emeritus, The Harvard Black Alumni Society</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">Board of Directors, Urbanworld Film Festival</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">Formerly, national Board of New City Kids</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C7433C; padding-bottom: 14px; border-bottom: 1px solid rgba(232,225,214,0.16);">Practice</div>
+        <div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">Licensed and ordained Minister of the gospel</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">Certified marriage counselor</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09); color: #D8D0C4;">Gospel-based counseling, chaplaincy, and executive and life coaching</div>
+          <div style="padding: 15px 0; border-bottom: 1px solid rgba(232,225,214,0.09);"><a href="assets/lawrence-adjah-bio.pdf" download="Lawrence E. Adjah — Bio.pdf" style="display: flex; justify-content: space-between; gap: 14px;"><span>Full bio, PDF</span><span style="color: #C7433C;">↓</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="position: fixed; left: 0; right: 0; bottom: 0; padding: 10px 0; border-top: 1px solid rgba(232,225,214,0.14); background: rgba(12,10,9,0.92); overflow: hidden; white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #6E675E; z-index: 20;">
+    <div class="la-marquee" style="display: flex; width: max-content; animation: la-marquee 40s linear infinite;">
+      <span style="padding: 0 26px;">Next &nbsp;·&nbsp; Dallas, 14 Sep &nbsp;·&nbsp; Atlanta, 28 Sep &nbsp;·&nbsp; Lagos, 11 Oct &nbsp;·&nbsp; London, 2 Nov &nbsp;·&nbsp; Houston, 16 Nov &nbsp;·&nbsp;</span>
+      <span style="padding: 0 26px;">Next &nbsp;·&nbsp; Dallas, 14 Sep &nbsp;·&nbsp; Atlanta, 28 Sep &nbsp;·&nbsp; Lagos, 11 Oct &nbsp;·&nbsp; London, 2 Nov &nbsp;·&nbsp; Houston, 16 Nov &nbsp;·&nbsp;</span>
+    </div>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; background: rgba(12,10,9,0.97); z-index: 30; animation: la-fade 260ms ease both; display: flex; align-items: center; padding: 0 8vw;">
+      <button type="button" onClick="{{ closeMenu }}" aria-label="Close" style="position: absolute; right: 40px; top: 34px; background: none; border: 0; color: #E8E1D6; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;">Close</button>
+      <div style="display: grid; grid-template-columns: 46px 1fr; gap: 14px 26px; align-items: baseline;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">01</span><a href="index.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Home</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">02</span><a href="partner.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Projects</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">03</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Books</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">04</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Sermons &amp; talks</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">05</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Media</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">06</span><a href="articles.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Articles &amp; writings</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">07</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Press</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">08</span><a href="request.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Invite</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">09</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Speaking engagements</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #C7433C;">10</span><span style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #C7433C;">About</span>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  componentDidMount() {
+    this._k = (e) => { if (e.key === 'Escape') this.setState({ menuOpen: false }); };
+    window.addEventListener('keydown', this._k);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._k); }
+  renderVals() {
+    return {
+      menuOpen: this.state.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

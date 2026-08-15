@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Big+Shoulders+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; background: #0C0A09; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #C7433C; color: #0C0A09; }
+  a { color: #E8E1D6; text-decoration: none; }
+  a:hover { color: #C7433C; }
+  @keyframes la-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes la-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  @keyframes la-breath { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+  @media (prefers-reduced-motion: reduce) { .la-marquee, .la-breath { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="position: fixed; inset: 0; overflow: hidden; background: #0C0A09; color: #E8E1D6; font-family: 'Schibsted Grotesk', 'Helvetica Neue', sans-serif; font-size: 16px; line-height: 1.55;" onMouseEnter="{{ pause }}" onMouseLeave="{{ resume }}">
+
+  <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+    <div style="position: absolute; inset: 0; animation: la-fade 900ms ease both;">
+      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 72% 78% at 60% 38%, #20272E 0%, #1A2128 46%, #141A20 78%, #10151A 100%);"></div>
+      <div class="la-breath" style="position: absolute; inset: 0; animation: la-breath 20s ease-in-out infinite;">
+        <div style="position: absolute; inset: 0; background-image: url('assets/headshot.jpg'); background-size: auto 92%; background-repeat: no-repeat; background-position: 64% 100%; -webkit-mask-image: radial-gradient(ellipse 34% 56% at 64% 56%, #000 34%, rgba(0,0,0,0.72) 64%, rgba(0,0,0,0.26) 86%, transparent 100%); mask-image: radial-gradient(ellipse 34% 56% at 64% 56%, #000 34%, rgba(0,0,0,0.72) 64%, rgba(0,0,0,0.26) 86%, transparent 100%);"></div>
+      </div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,10,9,0.9) 0%, rgba(12,10,9,0.25) 16%, rgba(12,10,9,0) 40%);"></div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; animation: la-fade 900ms ease both; background: radial-gradient(ellipse 68% 80% at 66% 48%, #221B17 0%, #14100E 56%, #0C0A09 100%);">
+
+      <div style="position: absolute; inset: 0; overflow: hidden;">
+        <div style="position: absolute; inset: 0; opacity: 0.3; filter: saturate(0.75) brightness(0.72);">
+          <image-slot id="la-bg-audiobook" shape="rect" placeholder="Background — Audible page or reading still"></image-slot>
+        </div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(12,10,9,0.55) 0%, rgba(12,10,9,0.86) 100%); pointer-events: none;"></div>
+      </div>
+      <div style="position: absolute; top: 50%; left: 8vw; right: 8vw; transform: translateY(-50%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5vw; align-items: center; direction: rtl;">
+        <div style="direction: ltr; aspect-ratio: 1 / 1; width: min(100%, 52vh); height: auto; justify-self: center; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
+          <image-slot id="la-audiobook" shape="rect" src="assets/audiobook-cover.png" placeholder="Bible audiobook cover, 1:1"></image-slot>
+        </div>
+        <div style="direction: ltr;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">#1 new release &nbsp;·&nbsp; Amazon &amp; Audible</div>
+          <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 28px; max-width: 22ch;">Lawrence E. Adjah Reads the Bible</div>
+          <div style="font-size: 17px; color: #B7AFA3; margin-bottom: 30px;">New International Version (NIV)</div>
+          <a href="https://www.audible.com/pd/Lawrence-E-Adjah-Reads-the-Bible-New-International-Version-NIV-Audiobook/B0DZZMLFT3" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Listen on Audible</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; animation: la-fade 900ms ease both; background: radial-gradient(ellipse 68% 80% at 34% 48%, #1C1B18 0%, #12110F 56%, #0C0A09 100%);">
+
+      <div style="position: absolute; inset: 0; overflow: hidden;">
+        <div style="position: absolute; inset: 0; opacity: 0.3; filter: saturate(0.75) brightness(0.72);">
+          <image-slot id="la-bg-fdf" shape="rect" src="https://ourfamilydinner.org/assets/img/hero-1-miami.jpg" placeholder="Background — ourfamilydinner.org hero photo"></image-slot>
+        </div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(12,10,9,0.55) 0%, rgba(12,10,9,0.86) 100%); pointer-events: none;"></div>
+      </div>
+      <div style="position: absolute; top: 50%; left: 8vw; right: 8vw; transform: translateY(-50%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5vw; align-items: center;">
+        <div style="aspect-ratio: 1 / 1; width: min(100%, 52vh); height: auto; justify-self: center; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
+          <image-slot id="la-fdf" shape="rect" src="assets/fd-logo.png" fit="contain" placeholder="Family Dinner Foundation hero, 1:1"></image-slot>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">Family Dinner Foundation</div>
+          <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 28px; max-width: 22ch;">50,000+ adults. 40 cities. Three continents.</div>
+          <a href="https://ourfamilydinner.org" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Discover the future of human connection</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; animation: la-fade 900ms ease both; background: radial-gradient(ellipse 68% 80% at 66% 48%, #191A1D 0%, #111214 56%, #0C0A09 100%);">
+
+      <div style="position: absolute; inset: 0; overflow: hidden;">
+        <div style="position: absolute; inset: 0; opacity: 0.3; filter: saturate(0.75) brightness(0.72);">
+          <image-slot id="la-bg-sermon" shape="rect" src="https://img.youtube.com/vi/BCUV87Zm74Q/maxresdefault.jpg" placeholder="Background — wide shot of the room at Beacon"></image-slot>
+        </div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(12,10,9,0.55) 0%, rgba(12,10,9,0.86) 100%); pointer-events: none;"></div>
+      </div>
+      <div style="position: absolute; top: 50%; left: 8vw; right: 8vw; transform: translateY(-50%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5vw; align-items: center; direction: rtl;">
+        <div style="direction: ltr; position: relative; aspect-ratio: 1 / 1; width: min(100%, 52vh); height: auto; justify-self: center; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
+          <image-slot id="la-sermon" shape="rect" src="https://img.youtube.com/vi/BCUV87Zm74Q/maxresdefault.jpg" placeholder="Beacon Church sermon still, 1:1"></image-slot>
+          <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 58px; height: 58px; border: 1px solid rgba(232,225,214,0.6); border-radius: 50%; display: grid; place-items: center; color: #F4EEE4; font-size: 15px; background: rgba(12,10,9,0.35); pointer-events: none;">▶</span>
+        </div>
+        <div style="direction: ltr;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">Latest sermon</div>
+          <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 28px; max-width: 22ch;">Beacon Church, Long Island, New York</div>
+          <a href="https://youtu.be/BCUV87Zm74Q" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Watch on YouTube</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; animation: la-fade 900ms ease both; background: radial-gradient(ellipse 68% 80% at 34% 48%, #1E1714 0%, #130F0E 56%, #0C0A09 100%);">
+
+      <div style="position: absolute; inset: 0; overflow: hidden;">
+        <div style="position: absolute; inset: 0; opacity: 0.3; filter: saturate(0.75) brightness(0.72);">
+          <image-slot id="la-bg-sii" shape="rect" src="https://ourfamilydinner.org/assets/img/hero-1-miami.jpg" placeholder="Background — gathering or campus pilot photo"></image-slot>
+        </div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(12,10,9,0.55) 0%, rgba(12,10,9,0.86) 100%); pointer-events: none;"></div>
+      </div>
+      <div style="position: absolute; top: 50%; left: 8vw; right: 8vw; transform: translateY(-50%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5vw; align-items: center;">
+        <div style="aspect-ratio: 1 / 1; width: min(100%, 52vh); height: auto; justify-self: center; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
+          <image-slot id="la-sii" shape="rect" placeholder="Social Infrastructure Initiative, 1:1"></image-slot>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">Social Infrastructure Initiative</div>
+          <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 28px; max-width: 24ch;">Technology as a tool for human flourishing.</div>
+          <a href="partner.html" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Learn more &amp; partner</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; animation: la-fade 900ms ease both; background: radial-gradient(ellipse 68% 80% at 66% 48%, #1B1A20 0%, #121115 56%, #0C0A09 100%);">
+
+      <div style="position: absolute; inset: 0; overflow: hidden;">
+        <div style="position: absolute; inset: 0; opacity: 0.3; filter: saturate(0.75) brightness(0.72);">
+          <image-slot id="la-bg-itoro" shape="rect" src="https://itoro-app.com/assets/splash-screen.png" placeholder="Background — itoro-app.com screenshot"></image-slot>
+        </div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(12,10,9,0.55) 0%, rgba(12,10,9,0.86) 100%); pointer-events: none;"></div>
+      </div>
+      <div style="position: absolute; top: 50%; left: 8vw; right: 8vw; transform: translateY(-50%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5vw; align-items: center; direction: rtl;">
+        <div style="direction: ltr; aspect-ratio: 1 / 1; width: min(100%, 52vh); height: auto; justify-self: center; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
+          <image-slot id="la-itoro" shape="rounded" radius="28" src="https://itoro-app.com/assets/logo.png" fit="contain" placeholder="iToro app icon, 1:1"></image-slot>
+        </div>
+        <div style="direction: ltr;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">iToro &nbsp;·&nbsp; private beta</div>
+          <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 30px; max-width: 22ch;">Where the world prays together.</div>
+          <div style="display: flex; gap: 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;">
+            <a href="https://itoro-app.com" target="_blank" rel="noopener" style="border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Apple iOS</a>
+            <a href="https://itoro-app.com" target="_blank" rel="noopener" style="border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Android</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; animation: la-fade 900ms ease both; background: radial-gradient(ellipse 68% 80% at 34% 48%, #1A1B1A 0%, #111211 56%, #0C0A09 100%);">
+
+      <div style="position: absolute; inset: 0; overflow: hidden;">
+        <div style="position: absolute; inset: 0; opacity: 0.3; filter: saturate(0.75) brightness(0.72);">
+          <image-slot id="la-bg-mbio" shape="rect" src="assets/mbio-hero.png" placeholder="Background — mbio hero section screenshot"></image-slot>
+        </div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(12,10,9,0.55) 0%, rgba(12,10,9,0.86) 100%); pointer-events: none;"></div>
+      </div>
+      <div style="position: absolute; top: 50%; left: 8vw; right: 8vw; transform: translateY(-50%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5vw; align-items: center;">
+        <div style="aspect-ratio: 1 / 1; width: min(100%, 52vh); height: auto; justify-self: center; box-shadow: 0 40px 80px -34px rgba(0,0,0,0.95);">
+          <image-slot id="la-mbio" shape="rounded" radius="28" src="https://mbio.ourfamilydinner.org/favicon.png" fit="contain" placeholder="mbio app icon, 1:1"></image-slot>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">mbio &nbsp;·&nbsp; private beta</div>
+          <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 30px; max-width: 22ch;">Meet real people in real time.</div>
+          <div style="display: flex; gap: 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;">
+            <a href="https://mbio.ourfamilydinner.org" target="_blank" rel="noopener" style="border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Apple iOS</a>
+            <a href="https://mbio.ourfamilydinner.org" target="_blank" rel="noopener" style="border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Android</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position: absolute; left: 40px; right: 40px; top: 34px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8279; z-index: 5;">
+    <a href="./" style="display: flex; align-items: center; gap: 14px; color: inherit;">
+      <img src="assets/caret-paper.png" alt="Lawrence Adjah" style="height: 26px; width: auto; display: block;" />
+      <span style="color: #F4EEE4;">Lawrence E. Adjah</span>
+      <span style="color: #C7433C; font-size: 14px;">✝</span>
+      <span>MBA &nbsp;MEd &nbsp;MDiv</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 26px;">
+      <a href="request.html" style="color: inherit;">Invite</a>
+      <a href="#" style="color: #F4EEE4;">View work</a>
+      <button type="button" onClick="{{ openMenu }}" aria-label="Menu" style="background: none; border: 0; padding: 4px 0 4px 6px; cursor: pointer; display: flex; flex-direction: column; gap: 5px;">
+        <span style="display: block; width: 22px; height: 1px; background: #E8E1D6;"></span>
+        <span style="display: block; width: 22px; height: 1px; background: #E8E1D6;"></span>
+      </button>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 40px; right: 40px; bottom: 62px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8279; z-index: 5;">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <span>Dallas, TX, USA</span>
+      <span style="color: #F4EEE4; font-variant-numeric: tabular-nums;">{{ cst }} &nbsp;CST</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px 26px; align-items: flex-end;">
+      <span style="color: #C7433C;">● Next: Sanctuary, Sun 09:00</span>
+      <a href="https://itoro-app.com/ask/lawrence-adjah" target="_blank" rel="noopener" style="color: inherit;">Prayer requests</a>
+      <a href="partner.html" style="color: inherit;">Partner</a>
+    </div>
+  </div>
+
+  <div style="position: absolute; right: 40px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #6E675E; z-index: 5;">
+    <span style="color: #F4EEE4;">{{ slideNo }}</span>
+    <span style="display: block; width: 1px; height: 34px; background: rgba(232,225,214,0.22);"></span>
+    <span>07</span>
+    <button type="button" onClick="{{ next }}" aria-label="Next" style="background: none; border: 0; color: #8A8279; cursor: pointer; font-family: inherit; font-size: 12px; padding: 6px 0;">↓</button>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 0; border-top: 1px solid rgba(232,225,214,0.14); background: rgba(12,10,9,0.6); overflow: hidden; white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #6E675E; z-index: 5;">
+    <div class="la-marquee" style="display: flex; width: max-content; animation: la-marquee 40s linear infinite;">
+      <span style="padding: 0 26px;">Next &nbsp;·&nbsp; Dallas, 14 Sep &nbsp;·&nbsp; Atlanta, 28 Sep &nbsp;·&nbsp; Lagos, 11 Oct &nbsp;·&nbsp; London, 2 Nov &nbsp;·&nbsp; Houston, 16 Nov &nbsp;·&nbsp;</span>
+      <span style="padding: 0 26px;">Next &nbsp;·&nbsp; Dallas, 14 Sep &nbsp;·&nbsp; Atlanta, 28 Sep &nbsp;·&nbsp; Lagos, 11 Oct &nbsp;·&nbsp; London, 2 Nov &nbsp;·&nbsp; Houston, 16 Nov &nbsp;·&nbsp;</span>
+    </div>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; background: rgba(12,10,9,0.97); z-index: 10; animation: la-fade 260ms ease both; display: flex; align-items: center; padding: 0 8vw;">
+      <button type="button" onClick="{{ closeMenu }}" aria-label="Close" style="position: absolute; right: 40px; top: 34px; background: none; border: 0; color: #E8E1D6; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;">Close</button>
+      <div style="display: grid; grid-template-columns: 46px 1fr; gap: 14px 26px; align-items: baseline;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #C7433C;">01</span><a href="./" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Home</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">02</span><a href="partner.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Projects</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">03</span><a href="the100marriagebook.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Books</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">04</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Sermons &amp; talks</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">05</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Media</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">06</span><a href="articles.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Articles &amp; writings</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">07</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Press</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">08</span><a href="request.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Invite</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">09</span><a href="#" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">Speaking engagements</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8279;">10</span><a href="about.html" style="font-size: clamp(24px, 3.2vw, 44px); line-height: 1.05; color: #F4EEE4;">About</a>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = { cst: '', n: 0, paused: false, menuOpen: false };
+
+  componentDidMount() {
+    this.tick();
+    this._t = setInterval(() => this.tick(), 1000);
+    this._c = setInterval(() => {
+      if (!this.state.paused && !this.state.menuOpen) this.advance(1);
+    }, 8000);
+    this._k = (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') this.advance(1);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') this.advance(-1);
+      if (e.key === 'Escape') this.setState({ menuOpen: false });
+    };
+    window.addEventListener('keydown', this._k);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._t); clearInterval(this._c);
+    window.removeEventListener('keydown', this._k);
+  }
+
+  tick() {
+    this.setState({
+      cst: new Date().toLocaleTimeString('en-US', {
+        timeZone: 'America/Chicago', hour12: false,
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      })
+    });
+  }
+
+  advance(d) { this.setState(s => ({ n: (s.n + d + 7) % 7 })); }
+
+  renderVals() {
+    const n = this.state.n;
+    const screens = {};
+    for (let i = 0; i < 7; i++) screens['s' + i] = n === i;
+    return Object.assign(screens, {
+      cst: this.state.cst || '00:00:00',
+      slideNo: '0' + (n + 1),
+      menuOpen: this.state.menuOpen,
+      next: () => this.advance(1),
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      pause: () => this.setState({ paused: true }),
+      resume: () => this.setState({ paused: false })
+    });
+  }
+}
+</script>
+</body>
+</html>

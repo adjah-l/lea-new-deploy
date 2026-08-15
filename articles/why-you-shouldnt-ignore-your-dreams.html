@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/jpeg" href="../favicon.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why You Shouldn't Ignore Your Dreams - Lawrence E. Adjah</title>
+<meta name="description" content="Understanding how God uses dreams to speak to us and the importance of discerning the dreams He wants us to pursue.">
+<link rel="stylesheet" href="https://use.typekit.net/pgv5taq.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1C1916;
+  --deep: #231F1B;
+  --gold: #6B9DAD;
+  --gold-light: #8FC1CE;
+  --cream: #FAF7F2;
+  --warm-white: #FEFDFB;
+  --mid: #847A6D;
+  --serif: 'trade-gothic-next', system-ui, sans-serif;
+  --sans: 'trade-gothic-next-compressed', sans-serif;
+  --display: 'trade-gothic-next-compressed', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--serif); background: var(--warm-white); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: rgba(254,253,251,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107,157,173,0.15);
+  transition: padding 0.3s;
+}
+.nav-logo { font-family: 'Cormorant', serif; font-size: 1.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: inherit; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; color: var(--ink); text-decoration: none; opacity: 0.65; transition: color 0.2s; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-cta { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--warm-white); background: var(--deep); text-decoration: none; padding: 0.6rem 1.4rem; border-radius: 2px; }
+
+/* ── ARTICLE HERO ── */
+#article-header {
+  padding: 14rem 4rem 6rem;
+  background: var(--deep);
+  color: #F2EBDF;
+  text-align: center;
+}
+.article-tag { font-family: var(--sans); font-size: 1rem; font-weight: 700; letter-spacing: 0.01em; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
+.article-h1 { font-family: var(--display); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 2rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.article-meta { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: rgba(242,235,223,0.5); }
+
+/* ── ARTICLE CONTENT ── */
+#article-body { padding: 8rem 4rem; background: var(--warm-white); }
+.body-inner { max-width: 800px; margin: 0 auto; }
+.editorial-content { font-size: 1.3rem; line-height: 1.8; color: var(--ink); }
+.editorial-content p { margin-bottom: 2.5rem; }
+.editorial-content h2, .editorial-content h3 { font-family: var(--serif); color: var(--deep); margin: 4rem 0 2rem; font-weight: 400; line-height: 1.2; }
+.editorial-content h2 { font-size: 2.4rem; }
+.editorial-content h3 { font-size: 1.8rem; border-bottom: 1px solid rgba(107,157,173,0.2); padding-bottom: 0.5rem; }
+.editorial-content blockquote { border-left: 2px solid var(--gold); padding-left: 3rem; margin: 4rem 0; font-style: italic; font-size: 1.6rem; color: var(--mid); }
+.editorial-content ul { margin-bottom: 3rem; padding-left: 1.5rem; list-style: none; }
+.editorial-content li { margin-bottom: 1.5rem; position: relative; padding-left: 2rem; }
+.editorial-content li::before { content: '-'; position: absolute; left: 0; color: var(--gold); }
+
+/* ── CTA SECTION ── */
+#article-footer-cta { padding: 6rem 4rem; background: var(--cream); text-align: center; border-top: 1px solid rgba(107,157,173,0.1); }
+.cta-inner { max-width: 700px; margin: 0 auto; }
+.cta-h3 { font-family: var(--display); font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem; color: var(--deep); }
+.btn-gold { display: inline-block; padding: 1.2rem 3rem; background: var(--deep); color: var(--gold); font-family: var(--sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: transform 0.3s; }
+.btn-gold:hover { transform: translateY(-2px); color: #fff; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 8rem 0 4rem; color: rgba(255,255,255,0.4); }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5rem; margin-bottom: 3rem; }
+.footer-logo { font-family: 'Cormorant', serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+.footer-logo span { color: var(--gold); }
+.footer-h { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; transform: scaleX(0.88); transform-origin: left; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.footer-lks { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.footer-lks a { color: inherit; text-decoration: none; transition: color 0.3s; }
+.footer-lks a:hover { color: var(--gold); }
+
+@media (max-width: 800px) {
+  #article-header { padding: 10rem 2rem 4rem; }
+  #article-body { padding: 4rem 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Lawrence <span>E.</span> Adjah</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#audiobook">Audiobook</a></li>
+    <li><a href="../index.html#start">Mission</a></li>
+    <li><a href="../index.html#building">Work</a></li>
+    <li><a href="../index.html#watchgodwork">Resources</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#invitation">Partner</a></li>
+  </ul>
+  <a href="../index.html#connect" class="nav-cta">Connect</a>
+</nav>
+
+<header id="article-header">
+  <span class="article-tag">Faith & Vision</span>
+  <h1 class="article-h1">Why You Shouldn't Ignore Your Dreams</h1>
+  <div class="article-meta">By Lawrence E. Adjah · May 9, 2024</div>
+</header>
+
+<main id="article-body">
+  <article class="body-inner">
+    <div class="editorial-content">
+      <p>Stop wasting your dreams. Did you know, God uses your dreams to speak to you.</p>
+      <p>All throughout scripture, from God appearing to Solomon in a dream and offering him any request, to God, through an angel, assuring Joseph, husband of Mary (Mother of Jesus), to take her as his wife - God uses your dreams to speak to you.</p>
+      <p>But not all dreams God allows you to have are dreams God wants you to have. Have you been having weird unexplainable dreams lately? (I know I have). This is another reason you should pay attention to your dreams.</p>
+      <p>Because dreams can also be a signal about the type of content you’re taking in (see: watch a scary movie, have scary dreams) or the character of spiritual activity that’s getting in (see: dark arts/ activities, spiritual warfare).</p>
+      <blockquote>"Dreams are always showing you something, which is why you shouldn’t waste them."</blockquote>
+      
+      <h3>3 Practical Ways to Handle Your Dreams:</h3>
+      
+      <ul>
+        <li><strong>Journal & Pray:</strong> If you have a dream, write it down immediately (your best recollection) and based on the type of dream you’ve had, it will dictate the type of prayer & action you’ll take.</li>
+        <li><strong>Invite Counsel to Pray & Discern with You:</strong> Share with your pastor, spiritual counsel, trusted brothers and sisters in Christ and invite them to join you in discerning and praying with and for you surrounding the dreams.</li>
+        <li><strong>Invite Counsel through Research: Study & Pray:</strong> Seek the Wisdom of others to help you discern and understand what your dreams may mean. Some great resources I own (this is not exhaustive of even my library still, pray and discern whether this is ideal for you as this may be a bit much for many).</li>
+      </ul>
+
+      <h3>A General Prayer Request:</h3>
+      <p><em>(To Recite Out Loud)</em></p>
+      <p>“Lord, thank you for life, and the gift of being in you and the Holy Spirit being in me, in Jesus’ Name and by your Spirit’s power, give me understanding, clarity and a heightened sensitivity to discern, receive and obey everything you may be calling you to do, in Jesus Name, we pray, Amen and Amen”</p>
+
+      <h3>A Spiritual Warfare Prayer Request:</h3>
+      <p><em>(To Recite Out Loud)</em></p>
+      <p>“Lord, thank you for life, the gift of dreams and the gift of being in you and the Holy Spirit being in me, in Jesus’ Name and by your Spirit’s power, I pray against any and all forces of evil, and all the strategies and schemes of the enemy, which seek to undermine your peace, security and reassurance in my life. I rebuke all dark spiritual forces and activities of the evil one in Jesus’ Name, and I declare, right now, in the name of Jesus, I am a (son/daughter) of the Most High God, who stands in victory with a shield of faith, and a belt of truth, whose armor covers me against the lies and deceptions of the enemy. I come out of agreement with any and all covenants of darkness, made knowingly and unknowingly, by me or before me, and by your Spirit, I will walk in the freedom you died to have me see, when you went you went up on Calvary. Lord, as your word and prayer says, lead us not into temptation, but deliver us from the evil one, for yours is the Kingdom, and the power, and the glory forever and ever. In Jesus’ Name, we pray, Amen and Amen”</p>
+
+      <h3>Recommended Resources:</h3>
+      <p><strong>On Dreams:</strong><br>
+      James W. And Michal Ann Goll: <em>Dream Language: the prophetic power of dreams, revelations and the spirit of wisdom</em></p>
+      
+      <p><strong>On Spiritual Warfare:</strong><br>
+      Derek Prince: <em>They Shall Expel Demons: What You Need to Know about Demons - Your Invisible Enemies</em><br>
+      Rev James A Solomon: <em>Deliverance from Demonic Covenants & Curses</em><br>
+      Minister Kevin A. Ewing: YouTube: <em>“Understanding Dreams & Their Meaning”</em></p>
+    </div>
+  </article>
+</main>
+
+<section id="article-footer-cta">
+  <div class="cta-inner">
+    <h3 class="cta-h3">Building the infrastructure human belonging requires.</h3>
+    <a href="../request.html" class="btn-gold">Work With Lawrence</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Lawrence E. <span>Adjah</span></div>
+        <p>Building the infrastructure human belonging requires.</p>
+      </div>
+      <div>
+        <div class="footer-h">The Work</div>
+        <ul class="footer-lks">
+          <li><a href="https://ourfamilydinner.org" target="_blank">Family Dinner Foundation</a></li>
+          <li><a href="https://itoro-app.com" target="_blank">iToro</a></li>
+          <li><a href="https://mbio.ourfamilydinner.org" target="_blank">mbio</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Engage</div>
+        <ul class="footer-lks">
+          <li><a href="../request.html">Speaking</a></li>
+          <li><a href="mailto:la@lawrenceadjah.com">Partnerships</a></li>
+          <li><a href="../index.html#connect">Connect</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Connect</div>
+        <ul class="footer-lks">
+          <li><a href="https://www.linkedin.com/in/lawrenceadjah/" target="_blank">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/adjah_l/" target="_blank">Instagram</a></li>
+          <li><a href="https://twitter.com/adjah_l" target="_blank">Twitter / X</a></li>
+          <li><a href="https://www.youtube.com/@LawrenceAdjah" target="_blank">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Resources</div>
+        <ul class="footer-lks">
+          <li><a href="../index.html#audiobook">NIV Audiobook</a></li>
+          <li><a href="../the100marriagebook.html">The 100 Marriage</a></li>
+          <li><a href="../articles.html">Articles</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Lawrence E. Adjah. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = window.scrollY > 60 ? '0.85rem 4rem' : '1.4rem 4rem';
+  });
+</script>
+</body>
+</html>

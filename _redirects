@@ -1,0 +1,15 @@
+# ================================================
+# NETLIFY REDIRECTS — lawrenceadjah.com
+# Routes specific subpages back to Squarespace.
+# NO catch-all — homepage stays on Netlify.
+# ================================================
+
+# Clean URLs for the pages served from Netlify
+/partner                        /partner.html                                                          200
+/speaking                       /request.html                                                          200
+/writing                        /articles.html                                                         200
+
+/media-1                      https://lawrence-adjah.squarespace.com/media-1                        301
+/nivbibleaudiobook              https://lawrence-adjah.squarespace.com/nivbibleaudiobook              301
+/the-100-marriage-arranged      https://lawrence-adjah.squarespace.com/the-100-marriage-arranged      301
+/s/*                            https://lawrence-adjah.squarespace.com/s/:splat                       301

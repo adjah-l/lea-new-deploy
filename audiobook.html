@@ -51,6 +51,22 @@
     [style*="right: 40px"][style*="top: 50%"] { display: none !important; }
     [style*="bottom: 62px"] { bottom: 50px !important; }
     .la-creds { display: none !important; }
+    [style*="grid-template-columns: 52px minmax(0px, 210px)"] {
+      grid-template-columns: 34px 1fr !important;
+      gap: 6px 14px !important;
+      padding: 20px 0 !important;
+    }
+    [style*="grid-template-columns: 52px minmax(0px, 210px)"] > span:nth-child(3),
+    [style*="grid-template-columns: 52px minmax(0px, 210px)"] > span:nth-child(4) {
+      grid-column: 2 !important;
+    }
+    [style*="grid-template-columns: 52px minmax(0px, 210px)"] > span:nth-child(2) {
+      font-size: 19px !important;
+    }
+    [style*="grid-template-columns: minmax(0px, 380px)"],
+    [style*="grid-template-columns: 150px 1fr"],
+    [style*="grid-template-columns: 110px 1fr"] { grid-template-columns: 1fr !important; gap: 6px !important; }
+    [style*="padding: 168px 40px"] { padding: 128px 20px 40px !important; }
     h1 { max-width: none !important; }
   }
   @media (max-width: 560px) {

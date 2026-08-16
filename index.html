@@ -17,6 +17,7 @@
   html, body { margin: 0; height: 100%; background: #0C0A09; -webkit-font-smoothing: antialiased; }
   ::selection { background: #C7433C; color: #0C0A09; }
   a { color: #E8E1D6; text-decoration: none; }
+  a.la-cta { font-family: 'JetBrains Mono', monospace !important; text-transform: uppercase !important; letter-spacing: 0.18em !important; font-size: 11px !important; }
   a:hover { color: #C7433C; }
   @keyframes la-fade { from { opacity: 0; } to { opacity: 1; } }
   @keyframes la-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
@@ -52,8 +53,15 @@
     [style*="right: 40px"][style*="top: 50%"] { display: none !important; }
     [style*="bottom: 62px"] { bottom: 50px !important; }
     .la-creds { display: none !important; }
-    .la-hero-msg { left: 22px !important; right: 22px !important; top: 92px !important; bottom: 106px !important; max-width: none !important; gap: 12px !important; justify-content: flex-end !important; overflow: hidden !important; }
+    .la-hero-msg { left: 22px !important; right: 22px !important; top: 92px !important; bottom: 182px !important; max-width: none !important; gap: 12px !important; justify-content: flex-end !important; overflow: hidden !important; }
     .la-hero-msg p { font-size: 15px !important; }
+    .la-hero-msg h1 { font-size: 40px !important; }
+    [style*="bottom: 62px"] > div:last-child { justify-content: flex-start !important; gap: 8px 18px !important; }
+    @media (max-height: 780px) {
+      .la-hero-msg { bottom: 172px !important; }
+      .la-hero-msg h1 { font-size: 34px !important; }
+      .la-hero-msg p { font-size: 14px !important; }
+    }
     [style*="grid-template-columns: 52px minmax(0px, 210px)"] {
       grid-template-columns: 34px 1fr !important;
       gap: 6px 14px !important;
@@ -96,7 +104,7 @@
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C;">Mission</span>
         <h1 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: clamp(38px, 5.2vw, 86px); line-height: 0.88; color: #F4EEE4;">PASTOR, BUILDER,<br />LEADER</h1>
         <p style="margin: 0; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.5; color: #DCD4C8;">Helping people and institutions establish and strengthen their most important relationships — with God, with other people, and with themselves, mind and body.</p>
-        <a href="about.html" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px; margin-top: 4px;">Learn more</a>
+        <a href="about.html" class="la-cta" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px; margin-top: 4px;">Learn more</a>
       </div>
     </div>
   </sc-if>
@@ -189,7 +197,7 @@
         <div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C7433C; margin-bottom: 22px;">Social Infrastructure Initiative</div>
           <div style="font-size: clamp(26px, 3.1vw, 46px); line-height: 1.12; color: #F4EEE4; margin-bottom: 28px; max-width: 24ch;">Technology as a tool for human flourishing.</div>
-          <a href="partner.html" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Learn more &amp; partner</a>
+          <a href="partner.html" class="la-cta" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(199,67,60,0.6); padding-bottom: 4px;">Learn more &amp; partner</a>
         </div>
       </div>
     </div>

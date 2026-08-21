@@ -79,6 +79,24 @@
     [style*="padding: 168px 40px"] { padding: 128px 20px 40px !important; }
     h1 { max-width: none !important; }
     [style*="aspect-ratio: 4 / 5"] { width: 190px !important; margin: 0 auto !important; }
+
+    /* --- mobile polish --- */
+    /* scrim behind the fixed header so scrolling content never collides with it */
+    [style*="position: fixed"][style*="top: 34px"]::before {
+      content: ""; position: absolute; left: -26px; right: -26px; top: -34px; bottom: -34px;
+      background: linear-gradient(to top, rgba(12,10,9,0) 0, #0C0A09 34px);
+      z-index: -1; pointer-events: none;
+    }
+    /* bigger tap targets: hit box expanded by an overlay, so no layout shifts */
+    [style*="position: fixed"][style*="top: 34px"] a,
+    a[href^="mailto:"], a[href^="tel:"], a[style*="border-bottom"] { position: relative; }
+    [style*="position: fixed"][style*="top: 34px"] a::after,
+    a[href^="mailto:"]::after, a[href^="tel:"]::after,
+    a[style*="border-bottom"]::after {
+      content: ""; position: absolute; left: 0; right: 0; top: -13px; bottom: -13px;
+    }
+    /* nav drawer fully opaque so the page behind stops ghosting through */
+    [style*="inset: 0px"][style*="z-index: 30"] { background: #0C0A09 !important; }
   }
   @media (max-width: 560px) {
     [style*="grid-template-columns: repeat(4, minmax(0px, 1fr))"] { grid-template-columns: 1fr !important; }

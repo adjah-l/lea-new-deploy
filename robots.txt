@@ -1,4 +1,23 @@
+# lawrenceadjah.com — all crawlers welcome on all public pages.
 User-agent: *
+Allow: /
+
+# Stated explicitly so the policy is documented rather than inferred.
+# Search/answer discovery:
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Model training:
+User-agent: GPTBot
 Allow: /
 
 Sitemap: https://lawrenceadjah.com/sitemap.xml

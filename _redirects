@@ -59,6 +59,8 @@
 /lawrence-adjah-bio.pdf          /assets/lawrence-adjah-bio.pdf                         301!
 /assets/Lawrence-Adjah-Bio.pdf   /assets/lawrence-adjah-bio.pdf                         301!
 
+# --- Gated books: delivered only after the required contact form ---
+/assets/resources/interpreting-his-word.pdf /404.html                                   404!
+
 # --- Legacy Squarespace host (only /s/* remains; audit before removing) ---
 /s/*                             https://lawrence-adjah.squarespace.com/s/:splat        301
-

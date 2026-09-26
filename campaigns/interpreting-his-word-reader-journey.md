@@ -3,7 +3,8 @@
 ## Enrollment
 
 - Trigger: reader requests the full digital book on `/books`.
-- Required fields: full name, email address, phone number, and email consent.
+- Required fields: first name, last name, email address, international phone
+  number, current city, state or region, country, and email consent.
 - Contact source: `lawrenceadjah.com/books`.
 - Campaign label: `interpreting-his-word-readers`.
 - Immediate action: show the download, email the book as an attachment, and add

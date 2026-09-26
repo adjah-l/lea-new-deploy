@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/assets/mobile-nav.css">
 <title>Books — Lawrence E. Adjah</title>
 <meta name="description" content="Books and digital editions from Lawrence E. Adjah on Scripture, interpretation, fasting, marriage, and faith.">
 <link rel="canonical" href="https://lawrenceadjah.com/books">
@@ -256,15 +257,20 @@
           <div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #C7433C; margin-bottom: 18px;">Free digital book</div>
             <h2 id="resource-dialog-title" style="margin: 0 0 14px; color: #F4EEE4; font-size: clamp(27px, 4vw, 42px); line-height: 1.08; font-weight: 500;">{{ resourceTitle }}</h2>
-            <p style="margin: 0 0 30px; color: #8A8279; max-width: 55ch;">Enter your contact information to open this book. All three fields are required.</p>
+            <p style="margin: 0 0 30px; color: #8A8279; max-width: 58ch;">Enter your contact information and current location to open this book. Every field is required.</p>
             <form name="resource-access" method="POST" data-netlify="true" netlify-honeypot="company" onSubmit="{{ submitResource }}">
               <input type="hidden" name="form-name" value="resource-access" />
               <input type="hidden" name="resource" value="{{ resourceTitle }}" />
+              <input type="hidden" name="phone-e164" value="" />
               <p style="position: absolute; left: -9999px;"><label>Do not fill this out: <input name="company" /></label></p>
               <div class="la-resource-fields" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 30px;">
-                <label class="la-field"><span class="la-label">Full name</span><input class="la-input" type="text" name="full-name" autocomplete="name" placeholder="Your full name" required="required" /></label>
+                <label class="la-field"><span class="la-label">First name</span><input class="la-input" type="text" name="first-name" autocomplete="given-name" placeholder="First name" maxlength="80" required="required" /></label>
+                <label class="la-field"><span class="la-label">Last name</span><input class="la-input" type="text" name="last-name" autocomplete="family-name" placeholder="Last name" maxlength="80" required="required" /></label>
                 <label class="la-field"><span class="la-label">Email address</span><input class="la-input" type="email" name="email" autocomplete="email" placeholder="you@example.com" required="required" /></label>
-                <label class="la-field" style="grid-column: 1 / -1;"><span class="la-label">Phone number</span><input class="la-input" type="tel" name="phone" autocomplete="tel" placeholder="+1 555 555 5555" required="required" /></label>
+                <label class="la-field"><span class="la-label">International phone number</span><input class="la-input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+1 555 555 5555" maxlength="32" title="Include the + sign and country calling code" required="required" /></label>
+                <label class="la-field"><span class="la-label">Current city</span><input class="la-input" type="text" name="city" autocomplete="address-level2" placeholder="City" maxlength="100" required="required" /></label>
+                <label class="la-field"><span class="la-label">State / region</span><input class="la-input" type="text" name="state-region" autocomplete="address-level1" placeholder="State, province, or region" maxlength="100" required="required" /></label>
+                <label class="la-field" style="grid-column: 1 / -1;"><span class="la-label">Country</span><select class="la-input" name="country" autocomplete="country" required="required"><option value="">Select your country</option><sc-for list="{{ countries }}" as="country"><option value="{{ country.code }}">{{ country.name }}</option></sc-for></select></label>
               </div>
               <label style="display: flex; align-items: flex-start; gap: 12px; margin-top: 22px; color: #8A8279; font-size: 13px; line-height: 1.5; cursor: pointer;"><input type="checkbox" name="email-consent" value="yes" required="required" style="width: 17px; height: 17px; margin: 2px 0 0; flex: 0 0 auto; accent-color: #C7433C;" /><span>Send me the book by email and occasional updates about related Bible-reading, prayer, fasting, and community resources. I can unsubscribe at any time.</span></label>
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(232,225,214,0.12);">
@@ -328,6 +334,11 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
 class Component extends DCLogic {
   state = { menuOpen: false, resource: null, resourceStatus: 'idle', resourceError: '', resourceDownloadUrl: '', confirmationSent: false };
+  countryCodes = 'AD AE AF AG AL AM AO AR AT AU AZ BA BB BD BE BF BG BH BI BJ BN BO BR BS BT BW BY BZ CA CD CF CG CH CI CL CM CN CO CR CU CV CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI FJ FM FR GA GB GD GE GH GM GN GQ GR GT GW GY HN HR HT HU ID IE IL IN IQ IR IS IT JM JO JP KE KG KH KI KM KN KP KR KW KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MR MT MU MV MW MX MY MZ NA NE NG NI NL NO NP NR NZ OM PA PE PG PH PK PL PS PT PW PY QA RO RS RU RW SA SB SC SD SE SG SI SK SL SM SN SO SR SS ST SV SY SZ TD TG TH TJ TL TM TN TO TR TT TV TZ UA UG US UY UZ VA VC VE VN VU WS YE ZA ZM ZW'.split(' ');
+  countries = this.countryCodes.map((code) => {
+    try { return { code, name: new Intl.DisplayNames([navigator.language || 'en'], { type: 'region' }).of(code) || code }; }
+    catch (_) { return { code, name: code }; }
+  }).sort((a, b) => a.name.localeCompare(b.name));
   resources = {
     interpreting: { title: 'Interpreting His Word', access: 'free' }
   };
@@ -340,8 +351,16 @@ class Component extends DCLogic {
     e.preventDefault();
     const form = e.target;
     if (!form.checkValidity()) { form.reportValidity(); return; }
+    const data = new FormData(form);
+    const phone = String(data.get('phone') || '').trim();
+    const phoneE164 = phone.startsWith('+') ? '+' + phone.replace(/\D/g, '') : '';
+    if (!/^\+[1-9]\d{6,14}$/.test(phoneE164)) {
+      this.setState({ resourceStatus: 'error', resourceError: 'Enter a valid phone number with the + sign and country calling code.' });
+      return;
+    }
+    data.set('phone-e164', phoneE164);
     this.setState({ resourceStatus: 'sending', resourceError: '' });
-    const body = new URLSearchParams(new FormData(form)).toString();
+    const body = new URLSearchParams(data).toString();
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -386,6 +405,7 @@ class Component extends DCLogic {
       resourceUrl: this.state.resourceDownloadUrl || '#',
       confirmationSent: this.state.confirmationSent,
       resourceButtonLabel: this.state.resourceStatus === 'sending' ? 'Opening…' : 'Read the book',
+      countries: this.countries,
       openInterpretingBook: () => this.openResource('interpreting'),
       closeResource: this.closeResource,
       submitResource: this.submitResource

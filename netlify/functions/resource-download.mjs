@@ -14,10 +14,7 @@ const escapeHtml = (value = "") => String(value)
   .replaceAll('"', "&quot;")
   .replaceAll("'", "&#039;");
 
-const splitName = (fullName) => {
-  const parts = fullName.trim().split(/\s+/);
-  return { firstName: parts[0], lastName: parts.slice(1).join(" ") };
-};
+const normalizeText = (value = "") => String(value).normalize("NFKC").replace(/\s+/g, " ").trim();
 
 const resendRequest = async (path, body, idempotencyKey) => {
   const headers = {
@@ -56,9 +53,8 @@ const followUpEmail = ({ firstName, email }) => ({
   tags: [{ name: "campaign", value: "interpreting-his-word-follow-up" }]
 });
 
-const enrollReader = async ({ fullName, email, phone, bookBase64 }) => {
+const enrollReader = async ({ firstName, lastName, email, phone, city, stateRegion, country, bookBase64 }) => {
   if (!process.env.RESEND_API_KEY || !process.env.RESOURCE_FROM_EMAIL) return false;
-  const { firstName, lastName } = splitName(fullName);
   const keyBase = createHash("sha256").update(email.toLowerCase()).digest("hex").slice(0, 24);
 
   try {
@@ -86,9 +82,15 @@ const enrollReader = async ({ fullName, email, phone, bookBase64 }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          full_name: fullName,
+          first_name: firstName,
+          last_name: lastName,
+          full_name: `${firstName} ${lastName}`,
           email,
           phone,
+          city,
+          state_region: stateRegion,
+          country,
+          country_code: country,
           resource: BOOK_TITLE,
           source: "lawrenceadjah.com/books",
           campaign: "interpreting-his-word-readers"
@@ -112,16 +114,23 @@ export default async (request) => {
   const rawBody = await request.text();
   if (rawBody.length > 10000) return new Response("Request too large", { status: 413 });
   const form = new URLSearchParams(rawBody);
-  const fullName = (form.get("full-name") || "").trim();
+  const firstName = normalizeText(form.get("first-name"));
+  const lastName = normalizeText(form.get("last-name"));
   const email = (form.get("email") || "").trim().toLowerCase();
-  const phone = (form.get("phone") || "").trim();
+  const rawPhone = (form.get("phone") || "").trim();
+  const phone = (form.get("phone-e164") || "").trim();
+  const city = normalizeText(form.get("city"));
+  const stateRegion = normalizeText(form.get("state-region"));
+  const country = (form.get("country") || "").trim().toUpperCase();
   const resource = (form.get("resource") || "").trim();
   const consent = form.get("email-consent") === "yes";
   const honeypot = (form.get("company") || "").trim();
 
   if (honeypot) return new Response("Accepted", { status: 202 });
-  if (fullName.split(/\s+/).length < 2 || !/^\S+@\S+\.\S+$/.test(email) || phone.replace(/\D/g, "").length < 7 || resource !== BOOK_TITLE || !consent) {
-    return new Response("Full name, valid email, phone number, and consent are required.", { status: 400 });
+  const validText = (value, max) => value.length > 0 && value.length <= max;
+  const normalizedPhone = phone || (rawPhone.startsWith("+") ? `+${rawPhone.replace(/\D/g, "")}` : "");
+  if (!validText(firstName, 80) || !validText(lastName, 80) || !/^\S+@\S+\.\S+$/.test(email) || !/^\+[1-9]\d{6,14}$/.test(normalizedPhone) || !validText(city, 100) || !validText(stateRegion, 100) || !/^[A-Z]{2}$/.test(country) || resource !== BOOK_TITLE || !consent) {
+    return new Response("First name, last name, valid email, international phone number, city, state or region, country, and consent are required.", { status: 400 });
   }
 
   try {
@@ -129,7 +138,7 @@ export default async (request) => {
     const bookBase64 = book.toString("base64");
     let confirmationSent = false;
     try {
-      confirmationSent = await enrollReader({ fullName, email, phone, bookBase64 });
+      confirmationSent = await enrollReader({ firstName, lastName, email, phone: normalizedPhone, city, stateRegion, country, bookBase64 });
     } catch (error) {
       console.error("Reader email enrollment failed", error);
     }

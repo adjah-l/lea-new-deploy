@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
@@ -22,11 +22,17 @@ const resendRequest = async (path, body, idempotencyKey) => {
     "Content-Type": "application/json"
   };
   if (idempotencyKey) headers["Idempotency-Key"] = idempotencyKey;
-  const response = await fetch(`${RESEND_API}${path}`, {
+  let response;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    response = await fetch(`${RESEND_API}${path}`, {
     method: "POST",
     headers,
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(8000)
   });
+    if (response.status !== 429 || attempt === 2) break;
+    await new Promise((resolve) => setTimeout(resolve, 1100));
+  }
   if (!response.ok) throw new Error(`Resend ${path} returned ${response.status}`);
   return response.json();
 };
@@ -102,7 +108,29 @@ const enrollReader = async ({ firstName, lastName, email, phone, city, stateRegi
   }
 
   await resendRequest("/emails", confirmationEmail({ firstName, email, bookBase64 }), `ihw-confirmation-${keyBase}`);
-  await resendRequest("/emails", followUpEmail({ firstName, email }), `ihw-follow-up-${keyBase}`);
+  try {
+    await resendRequest("/emails", followUpEmail({ firstName, email }), `ihw-follow-up-${keyBase}`);
+  } catch (error) {
+    console.error("Reader follow-up scheduling failed", error);
+  }
+  return true;
+};
+
+// A notification confirms a valid Read the Book request and PDF response, not
+// that the visitor saved the file to their device or finished reading it.
+const notifyOwner = async ({ firstName, lastName, email, phone, city, stateRegion, country, delivered }) => {
+  if (!process.env.RESEND_API_KEY || !process.env.RESOURCE_FROM_EMAIL) {
+    console.error("Owner book notification unavailable: email is not configured");
+    return false;
+  }
+  await resendRequest("/emails", {
+    from: process.env.RESOURCE_FROM_EMAIL,
+    to: [process.env.RESOURCE_NOTIFY_EMAIL || "lawrence@lawrenceadjah.com"],
+    reply_to: email,
+    subject: `${delivered ? "Book requested" : "Book delivery failed"}: Interpreting His Word`,
+    text: `Someone submitted “Read the Book” on https://lawrenceadjah.com/books.\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nLocation: ${city}, ${stateRegion}, ${country}\nTime: ${new Date().toISOString()}\n\n${delivered ? "The PDF was prepared for delivery to the browser. This does not confirm that the visitor saved or read it." : "The PDF could not be loaded. Please investigate the download service."}`,
+    tags: [{ name: "resource", value: "interpreting-his-word-owner" }]
+  }, `ihw-owner-${randomUUID()}`);
   return true;
 };
 
@@ -135,6 +163,12 @@ export default async (request) => {
 
   try {
     const book = await readFile(BOOK_PATH);
+    const reader = { firstName, lastName, email, phone: normalizedPhone, city, stateRegion, country };
+    const ownerNotified = await notifyOwner({ ...reader, delivered: true }).catch((error) => {
+      console.error("Owner book notification failed", error);
+      return false;
+    });
+    // Keep owner notification independent of reader enrollment and its failures.
     const bookBase64 = book.toString("base64");
     let confirmationSent = false;
     try {
@@ -150,7 +184,8 @@ export default async (request) => {
         "Content-Disposition": `attachment; filename="${BOOK_FILENAME}"`,
         "Cache-Control": "private, no-store, max-age=0",
         "X-Content-Type-Options": "nosniff",
-        "X-Confirmation-Email": confirmationSent ? "sent" : "not-configured"
+        "X-Owner-Notification": ownerNotified ? "sent" : "failed",
+        "X-Confirmation-Email": confirmationSent ? "sent" : "unavailable"
       }
     });
   } catch (error) {

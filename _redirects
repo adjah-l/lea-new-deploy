@@ -20,6 +20,9 @@
 /the-100-marriage-arranged       /the-100-marriage-arranged.html                        200
 /invite                          /request.html                                          200
 /writing                         /articles.html                                         200
+/s2s                             /s2s.html                                              200
+/s2s/intake                      /s2s-intake.html                                       200
+/s2s/hub                         /s2s-hub.html                                          200
 
 # --- .html duplicates collapse onto the canonical (forced past file shadowing) ---
 /index.html                      /                                                      301!
@@ -36,6 +39,9 @@
 /partner.html                    /partner                                               301!
 /articles.html                   /articles                                              301!
 /the-100-marriage-arranged.html  /the-100-marriage-arranged                             301!
+/s2s.html                        /s2s                                                   301!
+/s2s-intake.html                 /s2s/intake                                            301!
+/s2s-hub.html                    /s2s/hub                                               301!
 /articles/children-of-god-america-is-playing-with-fire.html /articles/children-of-god-america-is-playing-with-fire 301!
 /articles/god-is-always-speaking-to-you.html /articles/god-is-always-speaking-to-you                301!
 /articles/how-to-keep-your-heart-warm.html /articles/how-to-keep-your-heart-warm                  301!

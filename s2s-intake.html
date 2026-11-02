@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intake — The Strength to Strength Challenge</title>
+<meta name="description" content="Complete your intake for the Strength to Strength Challenge. About five minutes.">
+<link rel="canonical" href="https://lawrenceadjah.com/s2s/intake">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/jpeg" href="/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62,900&family=Jost:wght@400;500;600&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/s2s/s2s.css">
+<!-- Google Places (address autocomplete). Browser key restricted to lawrenceadjah.com; leave empty to fall back to typed address fields. -->
+<meta name="s2s-maps-key" content="">
+<!-- Where the intake is recorded: the counseling practice, so every S2S participant lands with every other intake. -->
+<meta name="s2s-intake-endpoint" content="https://counseling.lawrenceadjah.com/api/s2s/intake">
+</head>
+<body>
+<header class="s2s-header">
+  <div class="wrap">
+    <a class="s2s-brand" href="/s2s"><img src="/assets/s2s/s2s-mark-black.svg" alt=""><span>Strength to Strength</span></a>
+    <nav class="s2s-nav" aria-label="Challenge">
+      <a href="/s2s#expectations">Expectations</a>
+      <a href="/" title="lawrenceadjah.com">Lawrence E. Adjah</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="s tight">
+  <div class="wrap form-shell">
+    <p class="eyebrow">The Strength to Strength Challenge · Intake</p>
+    <h1 class="display" style="font-size:clamp(44px,7vw,80px)">Before we begin</h1>
+    <p class="lede" style="margin-top:20px">About five minutes. It tells us where you are starting from. Once you submit, the book excerpt and your next steps come straight to your inbox.</p>
+    <hr class="fade-rule" style="margin:36px 0 44px">
+
+    <div id="success" class="success" hidden>
+      <img src="/assets/s2s/s2s-mark-black.svg" alt="">
+      <h2 class="display" style="font-size:clamp(36px,6vw,64px)">You're in.</h2>
+      <p class="lede" style="margin:18px auto 0;max-width:30em">Check your inbox. Your excerpt, your hub, and your next two steps are on the way from <strong>la@lawrenceadjah.com</strong>. If it is not there in a few minutes, check your spam folder and mark it safe.</p>
+      <p style="margin-top:28px"><a class="btn" href="https://itoro-app.com/get" rel="noopener">Get iToro now <span class="arrow">→</span></a></p>
+    </div>
+
+    <form id="intake" novalidate>
+      <div id="msg" class="form-msg" role="alert"></div>
+      <div id="fields"></div>
+      <label class="hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      <p class="small" style="margin:0 0 20px">By submitting, you agree to receive the Challenge emails from Lawrence E. Adjah. Reply "unsubscribe" at any time. This is spiritual advisory and coaching, not licensed psychotherapy or mental health treatment.</p>
+      <button class="btn solid" type="submit" id="submit">Submit intake <span class="arrow">→</span></button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="s2s-footer">
+  <div class="wrap">
+    <a href="/s2s"><img src="/assets/s2s/s2s-mark-white.svg" alt="Strength to Strength"></a>
+    <div>© 2026 Lawrence E. Adjah · <a href="/">lawrenceadjah.com</a></div>
+  </div>
+</footer>
+
+<script>
+/* The questions mirror prisma/s2s-intake-fields.ts in the counseling app (slug s2s-intake).
+   The server validates against its own copy, so keep the two in step. */
+var COHORT = "Fall 2026 – Winter 2027";
+var FIELDS = [
+  { id:"sec-commitment-intro", type:"section", label:"Your commitment", note:"One decision, and it is yours." },
+  { id:"commitmentChoice", label:"What are you here for?", type:"select", required:true,
+    options:["Strength to Strength Challenge ("+COHORT+")","Strength to Strength Challenge ("+COHORT+") and one-on-one coaching","One-on-one coaching"] },
+  { id:"commitment", label:"Are you willing to commit to your group and to the expectations over these next 7 weeks?", type:"radio", required:true,
+    options:["I am willing","No, I'm not ready yet"], expand:true },
+  { id:"preferredTime", label:"Which live gathering time do you prefer?", type:"select", required:true,
+    options:["Monday, 7:30 a.m. Eastern","Monday, 8:30 a.m. Eastern","Monday, 9:00 p.m. Eastern","Any of these works for me"],
+    hint:"We all gather together for live prayer once a week. Your group of five keeps each other accountable in between." },
+
+  { id:"sec-contact", type:"section", label:"Contact information" },
+  { id:"firstName", label:"First name", type:"text", required:true, autocomplete:"given-name" },
+  { id:"lastName", label:"Last name", type:"text", required:true, autocomplete:"family-name" },
+  { id:"email", label:"Email", type:"email", required:true, autocomplete:"email" },
+  { id:"phone", label:"Phone number", type:"tel", required:true, autocomplete:"tel" },
+  { id:"dateOfBirth", label:"Birth date", type:"date", required:true },
+  { id:"lifeStage", label:"Life stage", type:"select", required:true,
+    options:["Single (no children)","Married (no children)","Married (with children)","Single (with children)","Engaged (no children)","Engaged (with children)"] },
+  { id:"address", label:"Address", type:"address", required:true, hint:"Start typing and choose your address." },
+
+  { id:"sec-focus", type:"section", label:"Focus" },
+  { id:"guidanceArea", label:"Where are you seeking the most guidance?", type:"select", required:true,
+    options:["Spiritual — my relationship with God","Familial — my relationship with family and friends","Physical — my relationship with my body","Psychological — my relationship with my mind and emotions","Personal — my relationship with work and calling"] },
+  { id:"outcome", label:"If we were to work together one-on-one, what specific outcome or transformation would you be seeking to achieve? How would you measurably define success?", type:"textarea", hint:"Optional if you're here for the Challenge only.", coachingOnly:true },
+
+  { id:"sec-spiritual", type:"section", label:"Spiritual intake" },
+  { id:"faithJourney", label:"Describe where you sense you are in your faith journey", type:"select", required:true,
+    options:["Exploring — curious yet uncommitted","Committed and nascent — less than 3 years in the faith","Committed yet disconnected — have drifted from faithful practice","Committed yet lacking intention and accountability","Committed, maturing and intentional","None of the above"] },
+  { id:"baptized", label:"Have you ever been baptized?", type:"select", required:true,
+    options:["Yes, as an adult (18+) and I remember the place and year","Yes, before I was 18 and I remember the place and year","I believe I did but I'm not 100% sure","Not yet, and I'm curious to learn more"] },
+  { id:"prayerFrequency", label:"How often do you talk to God?", type:"scale", required:true, min:1, max:10, minLabel:"Rarely, if ever", maxLabel:"Consistently throughout the day, every day" },
+  { id:"testimony", label:"Have you ever shared your testimony, or God story, with anyone?", type:"radio", required:true, options:["Yes","No"], hint:"When and why you recognised your need for God, and what led to a lifelong commitment." },
+  { id:"faithCommunity", label:"Are you currently part of a faith community?", type:"select", required:true, options:["Yes","Not at this time"], hint:"Teaching, prayer, accountability and community." },
+  { id:"bibleUnderstanding", label:"Describe your level of understanding of the Bible", type:"select", required:true,
+    options:["Exploring — have not begun study","Preliminary — read under 50%, familiar with some verses, books and stories","Growing yet nascent — read over 50%, know what the gospel is","Strong foundational — read all of it, know the gospel and how to read and interpret scripture"] },
+  { id:"generosity", label:"Describe where you sense you are around biblical generosity and stewardship", type:"select", required:true,
+    options:["Preliminary giver — occasionally volunteer time, no financial contributions","Emerging giver — periodic giving, with a desire for greater consistency, capacity and faith","Intentional, cheerful giver — budgeted monthly or more","None of the above"] },
+  { id:"counseling", label:"Are you currently in counseling or therapy?", type:"select", required:true,
+    options:["Yes — faith-based, more than a year","Yes — faith-based, less than a year","Yes — non-faith-based, more than a year","Yes — non-faith-based, less than a year","Not at this time, but I have in the past","Not at this time, and never have"] },
+  { id:"spiritualGifts", label:"Are you aware of your spiritual gifts?", type:"select", required:true, options:["Yes — I've done a formal assessment, or it has been shared with me in community","Not really"] },
+
+  { id:"sec-physical", type:"section", label:"Physical intake" },
+  { id:"health", label:"Health & lifestyle", type:"matrix", required:true, options:["Yes","No"],
+    rows:["Have you had a physical within the last 12 months?","Do you have a gym membership?","Do you take any prescription medication for a current health condition?","Are you using any additional vitamins or supplements?","Do you drink alcohol?"] },
+  { id:"lifting", label:"How often do you currently lift per week, on average?", type:"radio", required:true, options:["Never","Less than 3× per week","3× per week","More than 3× per week"] },
+  { id:"cardio", label:"How often do you currently run or do cardio per week, on average?", type:"radio", required:true, options:["Never","Less than 3× per week","3× per week","More than 3× per week"] },
+  { id:"nutrition", label:"How healthy do you eat?", type:"scale", required:true, min:1, max:10, minLabel:"Not healthy at all", maxLabel:"Extremely clean and healthy" },
+
+  { id:"sec-relational", type:"section", label:"Relational intake" },
+  { id:"relationshipChallenges", label:"Are there interpersonal challenges with a significant other, family, friends or colleagues that you are actively looking to work through this season?", type:"radio", required:true, options:["Yes","Not currently"] },
+  { id:"socialize", label:"How often do you socialise with friends in person?", type:"select", required:true, options:["1× per week","2× per month","1× per month","It's rare"] },
+  { id:"closeFriends", label:"How many close friendships do you currently have and actively maintain?", type:"select", required:true, options:["None","1","2","3 or more"] },
+  { id:"mentors", label:"How many older personal mentors do you have and actively keep in touch with?", type:"select", required:true, options:["None","1","2","3 or more"] },
+  { id:"showUpFriends", label:"How many friends do you have who will show up for you, no questions asked?", type:"select", required:true, options:["None","1","2","3 or more"], hint:"If you call and ask them to show, they show." },
+  { id:"groups", label:"How many groups are you part of that meet in person or virtually at least bi-weekly, and account for you when you don't show?", type:"select", required:true, options:["None","1","2"] },
+  { id:"occupation", label:"Your current occupation", type:"text" },
+
+  { id:"sec-close", type:"section", label:"Before you submit" },
+  { id:"timing", label:"Why is right now the right time for you?", type:"textarea" },
+  { id:"referral", label:"How did you hear about the challenge?", type:"select", required:true, options:["Personal referral","Threads","Instagram","LinkedIn","Website","Other"] },
+  { id:"signature", label:"Type your full name as your signature", type:"signature", required:true }
+];
+
+var EXPECTATIONS_HTML = '<div class="body"><p><strong>Spiritual strength.</strong> Pray every day and with the brothers live once a week. One prayer request a week, minimum; pray for every brother within 24 hours. Fast every Monday and the first Friday (sunup to 3 or 6 p.m.; last Monday, 24 hours). One meditative Scripture and one Bible chapter a day.</p><p><strong>Physical strength.</strong> Walk at least fifteen minutes, five mornings a week. Lift three days. 80/20 eating, whole foods, one gallon of water a day.</p><p><strong>Relational strength.</strong> The 5Cs: Commitment, Connection, Communication, Crisis, Celebration. If a brother shares a crisis or a win, you call within 24 hours.</p><p class="small" style="margin:0">The full expectations are on the <a href="/s2s#expectations" target="_blank" rel="noopener">Challenge page</a> and in the excerpt you will receive.</p></div>';
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function render(){
+  var out=[], open=false;
+  FIELDS.forEach(function(f){
+    if(f.type==="section"){ if(open) out.push("</fieldset>"); open=true;
+      out.push('<fieldset><legend class="sec">'+esc(f.label)+'</legend>'+(f.note?'<p class="sec-note">'+esc(f.note)+'</p>':'<p class="sec-note"></p>')); return; }
+    var req=f.required?'<span class="req" aria-hidden="true">*</span>':'';
+    var hint=f.hint?'<p class="hint">'+esc(f.hint)+'</p>':'';
+    var h='<div class="field" data-id="'+f.id+'"'+(f.coachingOnly?' data-coaching-only="1"':'')+'>';
+    if(f.type==="text"||f.type==="email"||f.type==="tel"||f.type==="date"){
+      h+='<label for="f-'+f.id+'">'+esc(f.label)+req+'</label>'+hint+'<input type="'+f.type+'" id="f-'+f.id+'" name="'+f.id+'"'+(f.autocomplete?' autocomplete="'+f.autocomplete+'"':'')+(f.required?' required':'')+'>';
+    } else if(f.type==="signature"){
+      h+='<label for="f-'+f.id+'">'+esc(f.label)+req+'</label>'+hint+'<input type="text" id="f-'+f.id+'" name="'+f.id+'" autocomplete="name" required>';
+    } else if(f.type==="textarea"){
+      h+='<label for="f-'+f.id+'">'+esc(f.label)+req+'</label>'+hint+'<textarea id="f-'+f.id+'" name="'+f.id+'"'+(f.required?' required':'')+'></textarea>';
+    } else if(f.type==="select"){
+      h+='<label for="f-'+f.id+'">'+esc(f.label)+req+'</label>'+hint+'<select id="f-'+f.id+'" name="'+f.id+'"'+(f.required?' required':'')+'><option value="">Choose one</option>'+f.options.map(function(o){return '<option>'+esc(o)+'</option>';}).join("")+'</select>';
+    } else if(f.type==="radio"){
+      h+='<p class="lbl">'+esc(f.label)+req+'</p>'+hint+'<div class="choices" role="radiogroup">'+f.options.map(function(o,i){return '<label><input type="radio" name="'+f.id+'" value="'+esc(o)+'"'+(f.required&&i===0?' required':'')+'> '+esc(o)+'</label>';}).join("")+'</div>';
+      if(f.expand) h+='<details class="expand"><summary>See the expectations</summary>'+EXPECTATIONS_HTML+'</details>';
+    } else if(f.type==="scale"){
+      var s=''; for(var i=f.min;i<=f.max;i++){ s+='<label><input type="radio" name="'+f.id+'" value="'+i+'"'+(f.required&&i===f.min?' required':'')+'>'+i+'</label>'; }
+      h+='<p class="lbl">'+esc(f.label)+req+'</p>'+hint+'<div class="scale" role="radiogroup">'+s+'</div><div class="scale-ends"><span>'+esc(f.minLabel)+'</span><span>'+esc(f.maxLabel)+'</span></div>';
+    } else if(f.type==="matrix"){
+      h+='<p class="lbl">'+esc(f.label)+req+'</p>'+hint+'<div class="matrix">'+f.rows.map(function(r,i){return '<div class="row"><span>'+esc(r)+'</span><div class="choices">'+f.options.map(function(o,j){return '<label><input type="radio" name="'+f.id+'.'+i+'" value="'+esc(o)+'"'+(j===0?' required':'')+'> '+esc(o)+'</label>';}).join("")+'</div></div>';}).join("")+'</div>';
+    } else if(f.type==="address"){
+      h+='<label for="f-address">'+esc(f.label)+req+'</label>'+hint+'<div id="address-host"><textarea id="f-address" name="address" required placeholder="Street, city, state and postal code"></textarea></div>'+
+         '<input type="hidden" name="addressStreet"><input type="hidden" name="addressCity"><input type="hidden" name="addressState"><input type="hidden" name="addressPostal"><input type="hidden" name="addressCountry"><input type="hidden" name="addressPlaceId">';
+    }
+    h+='</div>'; out.push(h);
+  });
+  if(open) out.push("</fieldset>");
+  document.getElementById("fields").innerHTML=out.join("");
+}
+render();
+
+/* Google Places: the new PlaceAutocompleteElement. Falls back to the textarea without a key or if the API fails. */
+(function(){
+  var key=(document.querySelector('meta[name="s2s-maps-key"]')||{}).content; if(!key) return;
+  var s=document.createElement("script"); s.async=true;
+  s.src="https://maps.googleapis.com/maps/api/js?key="+encodeURIComponent(key)+"&v=weekly&libraries=places&loading=async&callback=s2sPlacesReady";
+  s.onerror=function(){};
+  window.s2sPlacesReady=async function(){
+    try{
+      await google.maps.importLibrary("places");
+      var host=document.getElementById("address-host"); var ta=document.getElementById("f-address");
+      var el=new google.maps.places.PlaceAutocompleteElement({});
+      el.id="f-address-auto"; host.insertBefore(el,ta); ta.style.display="none"; ta.required=false;
+      var set=function(n,v){var i=document.querySelector('input[name="'+n+'"]'); if(i) i.value=v||"";};
+      el.addEventListener("gmp-select", async function(ev){
+        var place=ev.placePrediction.toPlace();
+        await place.fetchFields({fields:["formattedAddress","addressComponents","id"]});
+        ta.value=place.formattedAddress||""; set("addressPlaceId",place.id);
+        var c={}; (place.addressComponents||[]).forEach(function(x){ (x.types||[]).forEach(function(t){ c[t]=x.longText||x.shortText; }); });
+        set("addressStreet",[c.street_number,c.route].filter(Boolean).join(" "));
+        set("addressCity",c.locality||c.sublocality||c.postal_town||"");
+        set("addressState",c.administrative_area_level_1||"");
+        set("addressPostal",c.postal_code||"");
+        set("addressCountry",c.country||"");
+      });
+    }catch(e){ /* keep the plain textarea */ }
+  };
+  document.head.appendChild(s);
+})();
+
+/* Challenge-only applicants don't need the one-on-one question. */
+(function(){
+  var choice=document.getElementById("f-commitmentChoice"); var only=document.querySelectorAll('[data-coaching-only]');
+  function sync(){ var v=choice.value||""; var coaching=/coaching/i.test(v); only.forEach(function(el){ el.style.display=coaching||!v?"":"none"; }); }
+  choice.addEventListener("change",sync); sync();
+})();
+
+/* Submit */
+(function(){
+  var form=document.getElementById("intake"), msg=document.getElementById("msg"), btn=document.getElementById("submit");
+  var endpoint=(document.querySelector('meta[name="s2s-intake-endpoint"]')||{}).content;
+  function show(kind,text){ msg.className="form-msg "+kind; msg.textContent=text; if(kind==="err"){ msg.scrollIntoView({behavior:"smooth",block:"center"}); } }
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    var bad=form.querySelector(":invalid");
+    if(bad){ form.reportValidity(); var f=bad.closest(".field"); if(f) f.scrollIntoView({behavior:"smooth",block:"center"}); return; }
+    var fd=new FormData(form), values={}, signature="", website="";
+    fd.forEach(function(v,k){ if(k==="signature") signature=String(v); else if(k==="website") website=String(v); else values[k]=String(v); });
+    var auto=document.getElementById("f-address-auto"); if(auto && !values.address){ var typed=auto.querySelector("input"); values.address = typed ? typed.value : ""; }
+    if(!values.address){ show("err","Please enter your address."); return; }
+    btn.disabled=true; btn.textContent="Sending…"; msg.className="form-msg";
+    try{
+      var r=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({values:values,signature:signature,website:website})});
+      var data={}; try{ data=await r.json(); }catch(_){}
+      if(!r.ok||data.error){ throw new Error(data.error||("Something went wrong ("+r.status+")")); }
+      form.hidden=true; document.getElementById("success").hidden=false; window.scrollTo({top:0,behavior:"smooth"});
+    }catch(err){
+      show("err", err.message||"Something went wrong. Please try again, or email la@lawrenceadjah.com.");
+      btn.disabled=false; btn.innerHTML='Submit intake <span class="arrow">→</span>';
+    }
+  });
+})();
+</script>
+</body>
+</html>

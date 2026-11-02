@@ -12,8 +12,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62,900&family=Jost:wght@400;500;600&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/s2s/s2s.css">
-<!-- Google Places (address autocomplete). Browser key restricted to lawrenceadjah.com; leave empty to fall back to typed address fields. -->
-<meta name="s2s-maps-key" content="">
+<!-- Address suggestions use Places API (New) through the counseling app; no browser key or map is loaded. -->
+<meta name="s2s-places-endpoint" content="https://counseling.lawrenceadjah.com/api/s2s/places">
+<style>
+#address-host { position: relative; }
+#address-suggestions { position: absolute; z-index: 10; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #8e867b; box-shadow: 0 8px 20px #14110e20; max-height: 240px; overflow-y: auto; }
+#address-suggestions[hidden] { display: none; }
+#address-suggestions button { display: block; width: 100%; padding: 10px 14px; border: 0; border-bottom: 1px solid #e7e3da; background: #fff; color: #14110e; text-align: left; font: 15px Jost, sans-serif; cursor: pointer; }
+#address-suggestions button:hover, #address-suggestions button:focus { background: #f3f1ec; }
+.address-attribution { padding: 7px 14px; font: normal 12px/1.4 Roboto, Arial, sans-serif; color: #5e5e5e; text-align: right; white-space: nowrap; }
+</style>
 <!-- Where the intake is recorded: the counseling practice, so every S2S participant lands with every other intake. -->
 <meta name="s2s-intake-endpoint" content="https://counseling.lawrenceadjah.com/api/s2s/intake">
 </head>
@@ -83,7 +91,7 @@ var FIELDS = [
   { id:"dateOfBirth", label:"Birth date", type:"date", required:true },
   { id:"lifeStage", label:"Life stage", type:"select", required:true,
     options:["Single (no children)","Married (no children)","Married (with children)","Single (with children)","Engaged (no children)","Engaged (with children)"] },
-  { id:"address", label:"Address", type:"address", required:true, hint:"Start typing and choose your address." },
+  { id:"address", label:"Address", type:"address", required:true, hint:"Type your full address. Choose a suggestion if one appears." },
 
   { id:"sec-focus", type:"section", label:"Focus" },
   { id:"guidanceArea", label:"Where are you seeking the most guidance?", type:"select", required:true,
@@ -156,7 +164,7 @@ function render(){
     } else if(f.type==="matrix"){
       h+='<p class="lbl">'+esc(f.label)+req+'</p>'+hint+'<div class="matrix">'+f.rows.map(function(r,i){return '<div class="row"><span>'+esc(r)+'</span><div class="choices">'+f.options.map(function(o,j){return '<label><input type="radio" name="'+f.id+'.'+i+'" value="'+esc(o)+'"'+(j===0?' required':'')+'> '+esc(o)+'</label>';}).join("")+'</div></div>';}).join("")+'</div>';
     } else if(f.type==="address"){
-      h+='<label for="f-address">'+esc(f.label)+req+'</label>'+hint+'<div id="address-host"><textarea id="f-address" name="address" required placeholder="Street, city, state and postal code"></textarea></div>'+
+      h+='<label for="f-address">'+esc(f.label)+req+'</label>'+hint+'<div id="address-host"><textarea id="f-address" name="address" required aria-autocomplete="list" aria-controls="address-suggestions" aria-expanded="false" placeholder="Street, city, state and postal code"></textarea><div id="address-suggestions" role="listbox" hidden></div></div>'+
          '<input type="hidden" name="addressStreet"><input type="hidden" name="addressCity"><input type="hidden" name="addressState"><input type="hidden" name="addressPostal"><input type="hidden" name="addressCountry"><input type="hidden" name="addressPlaceId">';
     }
     h+='</div>'; out.push(h);
@@ -166,33 +174,66 @@ function render(){
 }
 render();
 
-/* Google Places: the new PlaceAutocompleteElement. Falls back to the textarea without a key or if the API fails. */
+/* Places API (New) suggestions. The editable address always remains usable. */
 (function(){
-  var key=(document.querySelector('meta[name="s2s-maps-key"]')||{}).content; if(!key) return;
-  var s=document.createElement("script"); s.async=true;
-  s.src="https://maps.googleapis.com/maps/api/js?key="+encodeURIComponent(key)+"&v=weekly&libraries=places&loading=async&callback=s2sPlacesReady";
-  s.onerror=function(){};
-  window.s2sPlacesReady=async function(){
+  var endpoint=(document.querySelector('meta[name="s2s-places-endpoint"]')||{}).content;
+  var field=document.getElementById("f-address"), list=document.getElementById("address-suggestions");
+  if(!endpoint||!field||!list) return;
+  var session=crypto.randomUUID(), sequence=0, timer=0, unavailable=false, selected=false;
+  function hidden(name,value){ var el=document.querySelector('input[name="'+name+'"]'); if(el) el.value=value||""; }
+  function clearDetails(){ ["addressStreet","addressCity","addressState","addressPostal","addressCountry","addressPlaceId"].forEach(function(name){ hidden(name,""); }); }
+  function close(){ list.hidden=true; list.replaceChildren(); field.setAttribute("aria-expanded","false"); }
+  async function choose(item){
+    sequence++; clearTimeout(timer); close(); selected=true;
+    field.value=item.description; hidden("addressPlaceId",item.placeId);
     try{
-      await google.maps.importLibrary("places");
-      var host=document.getElementById("address-host"); var ta=document.getElementById("f-address");
-      var el=new google.maps.places.PlaceAutocompleteElement({});
-      el.id="f-address-auto"; host.insertBefore(el,ta); ta.style.display="none"; ta.required=false;
-      var set=function(n,v){var i=document.querySelector('input[name="'+n+'"]'); if(i) i.value=v||"";};
-      el.addEventListener("gmp-select", async function(ev){
-        var place=ev.placePrediction.toPlace();
-        await place.fetchFields({fields:["formattedAddress","addressComponents","id"]});
-        ta.value=place.formattedAddress||""; set("addressPlaceId",place.id);
-        var c={}; (place.addressComponents||[]).forEach(function(x){ (x.types||[]).forEach(function(t){ c[t]=x.longText||x.shortText; }); });
-        set("addressStreet",[c.street_number,c.route].filter(Boolean).join(" "));
-        set("addressCity",c.locality||c.sublocality||c.postal_town||"");
-        set("addressState",c.administrative_area_level_1||"");
-        set("addressPostal",c.postal_code||"");
-        set("addressCountry",c.country||"");
+      var response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"details",placeId:item.placeId,sessionToken:session})});
+      if(!response.ok) return;
+      var data=await response.json();
+      field.value=data.formattedAddress||item.description;
+      hidden("addressPlaceId",data.placeId||item.placeId);
+      var components={}; (data.addressComponents||[]).forEach(function(part){ (part.types||[]).forEach(function(type){ components[type]=part.longText||part.shortText||""; }); });
+      hidden("addressStreet",[components.street_number,components.route].filter(Boolean).join(" "));
+      hidden("addressCity",components.locality||components.sublocality||components.postal_town||"");
+      hidden("addressState",components.administrative_area_level_1||"");
+      hidden("addressPostal",components.postal_code||"");
+      hidden("addressCountry",components.country||"");
+    }catch(_){} // The selected address text remains editable if details fail.
+  }
+  async function search(value,requestNumber){
+    try{
+      var response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"autocomplete",input:value,sessionToken:session})});
+      if(!response.ok){ if(response.status===503) unavailable=true; close(); return; }
+      var data=await response.json();
+      if(requestNumber!==sequence||field.value.trim()!==value) return;
+      close();
+      (data.suggestions||[]).forEach(function(item){
+        var button=document.createElement("button"); button.type="button"; button.setAttribute("role","option");
+        button.textContent=item.description; button.addEventListener("click",function(){ choose(item); }); list.appendChild(button);
       });
-    }catch(e){ /* keep the plain textarea */ }
-  };
-  document.head.appendChild(s);
+      if(list.childElementCount){
+        var credit=document.createElement("div"); credit.className="address-attribution"; credit.setAttribute("translate","no"); credit.textContent="Google Maps"; list.appendChild(credit);
+        list.hidden=false; field.setAttribute("aria-expanded","true");
+      }
+    }catch(_){ close(); }
+  }
+  field.addEventListener("input",function(){
+    if(selected){ session=crypto.randomUUID(); selected=false; }
+    clearDetails(); close(); clearTimeout(timer); sequence++;
+    var value=field.value.trim(), current=sequence;
+    if(!unavailable&&value.length>=4) timer=setTimeout(function(){ search(value,current); },350);
+  });
+  field.addEventListener("keydown",function(event){
+    if(event.key==="Escape") close();
+    if(event.key==="ArrowDown"&&!list.hidden){ var first=list.querySelector("button"); if(first){ event.preventDefault(); first.focus(); } }
+  });
+  list.addEventListener("keydown",function(event){
+    var buttons=Array.from(list.querySelectorAll("button")), index=buttons.indexOf(document.activeElement);
+    if(event.key==="Escape"){ close(); field.focus(); }
+    if(event.key==="ArrowDown"&&index<buttons.length-1){ event.preventDefault(); buttons[index+1].focus(); }
+    if(event.key==="ArrowUp"){ event.preventDefault(); if(index>0) buttons[index-1].focus(); else field.focus(); }
+  });
+  document.addEventListener("click",function(event){ if(!document.getElementById("address-host").contains(event.target)) close(); });
 })();
 
 /* Challenge-only applicants don't need the one-on-one question. */
@@ -213,7 +254,6 @@ render();
     if(bad){ form.reportValidity(); var f=bad.closest(".field"); if(f) f.scrollIntoView({behavior:"smooth",block:"center"}); return; }
     var fd=new FormData(form), values={}, signature="", website="";
     fd.forEach(function(v,k){ if(k==="signature") signature=String(v); else if(k==="website") website=String(v); else values[k]=String(v); });
-    var auto=document.getElementById("f-address-auto"); if(auto && !values.address){ var typed=auto.querySelector("input"); values.address = typed ? typed.value : ""; }
     if(!values.address){ show("err","Please enter your address."); return; }
     btn.disabled=true; btn.textContent="Sending…"; msg.className="form-msg";
     try{

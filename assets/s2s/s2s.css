@@ -139,7 +139,7 @@ section.s h2.display { font-size: clamp(40px, 6vw, 72px); margin-bottom: 22px; }
 
 /* pull quote */
 .quote { border-top: 1.25px solid var(--ink); border-bottom: 1.25px solid var(--ink); padding: 44px 0; margin: 0; }
-.quote p { font-style: italic; font-size: clamp(24px, 3vw, 34px); line-height: 1.35; margin: 0; max-width: 24em; }
+.quote p { font-style: normal; font-size: clamp(24px, 3vw, 34px); line-height: 1.35; margin: 0; max-width: 24em; }
 .quote cite { display: block; margin-top: 18px; font-style: normal; font-family: var(--label); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone-dark); }
 .ink .quote { border-color: var(--stone-light); }
 .ink .quote cite { color: var(--stone-light); }
@@ -218,6 +218,8 @@ input[type=text], input[type=email], input[type=tel], input[type=date], select, 
   border: 1.25px solid var(--rule); border-radius: 2px; padding: 13px 14px; outline: none; transition: border-color .15s;
 }
 input:focus, select:focus, textarea:focus { border-color: var(--ink); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.ink a:focus-visible, .ink button:focus-visible, .stone a:focus-visible { outline-color: var(--white); }
 textarea { min-height: 96px; resize: vertical; }
 select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%2314110E' stroke-width='1.5'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
 .choices { display: flex; flex-wrap: wrap; gap: 10px; }

@@ -156,7 +156,7 @@ section.s h2.display { font-size: clamp(40px, 6vw, 72px); margin-bottom: 22px; }
 @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
 
 /* outcome tiles */
-.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .tile { border-top: 1.25px solid var(--ink); padding-top: 18px; }
 .tile .k { font-family: var(--label); font-weight: 600; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone-dark); margin: 0 0 8px; }
 .tile h3 { font-family: var(--display); font-weight: 900; font-stretch: 62%; font-size: 34px; line-height: .95; text-transform: uppercase; margin: 0 0 12px; }
@@ -191,6 +191,7 @@ section.s h2.display { font-size: clamp(40px, 6vw, 72px); margin-bottom: 22px; }
 /* about */
 .about { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
 .about img { width: 220px; filter: grayscale(1); }
+.author-credentials { font-family: inherit; font-size: 0.46em; letter-spacing: 0; }
 @media (max-width: 640px) { .about { grid-template-columns: 1fr; } .about img { width: 160px; } }
 
 /* footer */

@@ -57,7 +57,7 @@
       <div id="msg" class="form-msg" role="alert"></div>
       <div id="fields"></div>
       <label class="hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-      <p class="small" style="margin:0 0 20px">By submitting, you agree to receive the Challenge emails from Lawrence E. Adjah. Reply "unsubscribe" at any time. This is spiritual advisory and coaching, not licensed psychotherapy or mental health treatment.</p>
+      <p class="small" style="margin:0 0 20px">By submitting, you agree to receive a follow-up email from Lawrence E. Adjah and, if you join the Challenge, its weekly emails. Reply "unsubscribe" at any time. This is spiritual advisory and coaching, not licensed psychotherapy or mental health treatment.</p>
       <button class="btn solid" type="submit" id="submit">Submit intake</button>
     </form>
   </div>
@@ -275,6 +275,7 @@ render();
       if(!r.ok||data.error){ throw new Error(data.error||("Something went wrong ("+r.status+")")); }
       form.hidden=true; var success=document.getElementById("success"); success.hidden=false;
       if(data.challengeRequested===false){ success.querySelector("h2").textContent="We received your inquiry."; success.querySelector(".lede").textContent="Check your inbox for a confirmation from la@lawrenceadjah.com. Lawrence will follow up about one-on-one coaching."; success.querySelector("a.btn").parentElement.hidden=true; }
+      else if(data.willing===false){ success.querySelector("h2").textContent="We received your intake."; success.querySelector(".lede").textContent="You said you are not ready to commit yet. Check your inbox for the Introduction and a follow-up from Lawrence."; success.querySelector("a.btn").parentElement.hidden=true; }
       window.scrollTo({top:0,behavior:"smooth"});
     }catch(err){
       show("err", err.message||"Something went wrong. Please try again, or email la@lawrenceadjah.com.");

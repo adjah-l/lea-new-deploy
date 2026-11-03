@@ -191,7 +191,7 @@ section.s h2.display { font-size: clamp(40px, 6vw, 72px); margin-bottom: 22px; }
 /* about */
 .about { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
 .about img { width: 220px; filter: grayscale(1); }
-.author-credentials { font-family: inherit; font-size: 0.46em; letter-spacing: 0; }
+.author-credentials { display: block; font-family: inherit; font-size: 0.46em; line-height: 1.15; letter-spacing: 0.04em; margin-top: 8px; }
 @media (max-width: 640px) { .about { grid-template-columns: 1fr; } .about img { width: 160px; } }
 
 /* footer */

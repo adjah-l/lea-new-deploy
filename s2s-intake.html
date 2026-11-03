@@ -31,7 +31,7 @@
     <a class="s2s-brand" href="/s2s"><img src="/assets/s2s/s2s-mark-black.svg" alt=""><span>Strength to Strength</span></a>
     <nav class="s2s-nav" aria-label="Challenge">
       <a href="/s2s#expectations">Expectations</a>
-      <a href="/" title="lawrenceadjah.com">Lawrence E. Adjah</a>
+      <a href="/s2s#outcomes">Expected outcomes</a>
     </nav>
   </div>
 </header>
@@ -42,12 +42,14 @@
     <p class="eyebrow">The Strength to Strength Challenge · Intake</p>
     <h1 class="display" style="font-size:clamp(44px,7vw,80px)">Before we begin</h1>
     <p class="lede" style="margin-top:20px">About five minutes. It tells us where you are starting from. Once you submit, the book excerpt and your next steps come straight to your inbox.</p>
+    <div class="body" style="margin-top:28px"><p><strong>Expected outcomes.</strong> In seven weeks, we are praying for a more honest and consistent prayer and fasting life, one new promise of God hidden in your heart, at least one brother who knows and invests in you, and tangible growth in your physical health.</p><p><strong>Expected inputs.</strong> Daily prayer and Scripture, weekly live prayer and accountability in iToro, Monday fasting, regular walking and lifting, and the 5Cs in your group of five. <a href="/s2s#expectations" target="_blank" rel="noopener">Read the full expectations</a> and <a href="/s2s#outcomes" target="_blank" rel="noopener">expected outcomes</a> before you begin.</p><p><a href="/assets/s2s/strength-to-strength-introduction.pdf" target="_blank" rel="noopener">Read the Introduction (PDF)</a> now or in the welcome email after submitting.</p></div>
     <hr class="fade-rule" style="margin:36px 0 44px">
 
     <div id="success" class="success" hidden>
       <img src="/assets/s2s/s2s-mark-black.svg" alt="">
       <h2 class="display" style="font-size:clamp(36px,6vw,64px)">You're in.</h2>
       <p class="lede" style="margin:18px auto 0;max-width:30em">Check your inbox. Your excerpt, your hub, and your next two steps are on the way from <strong>la@lawrenceadjah.com</strong>. If it is not there in a few minutes, check your spam folder and mark it safe.</p>
+      <p>Download iToro, sign up with the same email, and complete your profile. We will email your group join link once the community is ready. Prayers, accountability, and check-ins happen there.</p>
       <p style="margin-top:28px"><a class="btn" href="https://itoro-app.com/get" rel="noopener">Get iToro now</a></p>
     </div>
 
@@ -91,12 +93,12 @@ var FIELDS = [
   { id:"dateOfBirth", label:"Birth date", type:"date", required:true },
   { id:"lifeStage", label:"Life stage", type:"select", required:true,
     options:["Single (no children)","Married (no children)","Married (with children)","Single (with children)","Engaged (no children)","Engaged (with children)"] },
-  { id:"address", label:"Address", type:"address", required:true, hint:"Type your full address. Choose a suggestion if one appears." },
+  { id:"address", label:"Address", type:"address", required:true, hint:"Start typing your street address and select a suggestion. You can also type the full address yourself." },
 
   { id:"sec-focus", type:"section", label:"Focus" },
   { id:"guidanceArea", label:"Where are you seeking the most guidance?", type:"select", required:true,
     options:["Spiritual — my relationship with God","Familial — my relationship with family and friends","Physical — my relationship with my body","Psychological — my relationship with my mind and emotions","Personal — my relationship with work and calling"] },
-  { id:"outcome", label:"If we were to work together one-on-one, what specific outcome or transformation would you be seeking to achieve? How would you measurably define success?", type:"textarea", hint:"Optional if you're here for the Challenge only.", coachingOnly:true },
+  { id:"outcome", label:"What specific outcome or transformation are you seeking to achieve during this challenge? How would you measurably define success?", type:"textarea" },
 
   { id:"sec-spiritual", type:"section", label:"Spiritual intake" },
   { id:"faithJourney", label:"Describe where you sense you are in your faith journey", type:"select", required:true,
@@ -131,7 +133,7 @@ var FIELDS = [
   { id:"occupation", label:"Your current occupation", type:"text" },
 
   { id:"sec-close", type:"section", label:"Before you submit" },
-  { id:"timing", label:"Why is right now the right time for you?", type:"textarea" },
+  { id:"timing", label:"Why is right now the right time for you?", type:"textarea", hint:"You can read the Introduction before submitting or right after in your welcome email." },
   { id:"referral", label:"How did you hear about the challenge?", type:"select", required:true, options:["Personal referral","Threads","Instagram","LinkedIn","Website","Other"] },
   { id:"signature", label:"Type your full name as your signature", type:"signature", required:true }
 ];
@@ -146,7 +148,7 @@ function render(){
       out.push('<fieldset><legend class="sec">'+esc(f.label)+'</legend>'+(f.note?'<p class="sec-note">'+esc(f.note)+'</p>':'<p class="sec-note"></p>')); return; }
     var req=f.required?'<span class="req" aria-hidden="true">*</span>':'';
     var hint=f.hint?'<p class="hint">'+esc(f.hint)+'</p>':'';
-    var h='<div class="field" data-id="'+f.id+'"'+(f.coachingOnly?' data-coaching-only="1"':'')+'>';
+    var h='<div class="field" data-id="'+f.id+'">';
     if(f.type==="text"||f.type==="email"||f.type==="tel"||f.type==="date"){
       h+='<label for="f-'+f.id+'">'+esc(f.label)+req+'</label>'+hint+'<input type="'+f.type+'" id="f-'+f.id+'" name="'+f.id+'"'+(f.autocomplete?' autocomplete="'+f.autocomplete+'"':'')+(f.required?' required':'')+'>';
     } else if(f.type==="signature"){
@@ -236,10 +238,21 @@ render();
   document.addEventListener("click",function(event){ if(!document.getElementById("address-host").contains(event.target)) close(); });
 })();
 
-/* Challenge-only applicants don't need the one-on-one question. */
+/* Coaching-only visitors do not need a group commitment or gathering preference. */
 (function(){
-  var choice=document.getElementById("f-commitmentChoice"); var only=document.querySelectorAll('[data-coaching-only]');
-  function sync(){ var v=choice.value||""; var coaching=/coaching/i.test(v); only.forEach(function(el){ el.style.display=coaching||!v?"":"none"; }); }
+  var choice=document.getElementById("f-commitmentChoice");
+  function sync(){
+    var coachingOnly=choice.value==="One-on-one coaching";
+    ["commitment","preferredTime"].forEach(function(id){
+      var row=document.querySelector('[data-id="'+id+'"]');
+      row.hidden=coachingOnly;
+      row.querySelectorAll("input,select,textarea").forEach(function(input){
+        input.disabled=coachingOnly;
+        if(coachingOnly) input.required=false;
+        else if(id==="preferredTime" || (id==="commitment" && input.value==="I am willing")) input.required=true;
+      });
+    });
+  }
   choice.addEventListener("change",sync); sync();
 })();
 
@@ -260,7 +273,9 @@ render();
       var r=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({values:values,signature:signature,website:website})});
       var data={}; try{ data=await r.json(); }catch(_){}
       if(!r.ok||data.error){ throw new Error(data.error||("Something went wrong ("+r.status+")")); }
-      form.hidden=true; document.getElementById("success").hidden=false; window.scrollTo({top:0,behavior:"smooth"});
+      form.hidden=true; var success=document.getElementById("success"); success.hidden=false;
+      if(data.challengeRequested===false){ success.querySelector("h2").textContent="We received your inquiry."; success.querySelector(".lede").textContent="Check your inbox for a confirmation from la@lawrenceadjah.com. Lawrence will follow up about one-on-one coaching."; success.querySelector("a.btn").parentElement.hidden=true; }
+      window.scrollTo({top:0,behavior:"smooth"});
     }catch(err){
       show("err", err.message||"Something went wrong. Please try again, or email la@lawrenceadjah.com.");
       btn.disabled=false; btn.innerHTML='Submit intake';

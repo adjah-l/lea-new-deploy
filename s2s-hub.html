@@ -12,7 +12,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62,900&family=Jost:wght@400;500;600&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/s2s/s2s.css">
-<meta name="s2s-excerpt-endpoint" content="https://counseling.lawrenceadjah.com/api/s2s/excerpt">
 <!-- Fill in once the cohort's iToro community exists: https://itoro-app.com/join/<code> -->
 <meta name="s2s-itoro-join" content="">
 </head>
@@ -52,8 +51,7 @@
         <p class="n">1</p>
         <h3>Read the excerpt</h3>
         <p>The Introduction to <em>Strength to Strength</em> opens the Challenge. Read it before we gather.</p>
-        <div class="links"><a id="excerpt-link" href="#" rel="noopener">Download the excerpt (PDF)</a></div>
-        <p class="small" id="excerpt-note" style="margin:10px 0 0;display:none">This link only works from the email we sent you. Open the hub from that email, or use the PDF attached to it.</p>
+        <div class="links"><a id="excerpt-link" href="/assets/s2s/strength-to-strength-introduction.pdf" target="_blank" rel="noopener">Download the excerpt (PDF)</a></div>
       </div>
       <div class="step">
         <p class="n">2</p>
@@ -159,7 +157,7 @@
     <h2 class="display rv">Before you ask</h2>
     <div class="faq rv">
       <details><summary>When does my seven weeks start?</summary><div class="a">When Lawrence launches the cohort in iToro. You will get an email and an app notification. Until then, start the inputs on your own: pray, walk, read a chapter. Nothing is wasted.</div></details>
-      <details><summary>Which gathering time will we use?</summary><div class="a">Your group decides. The standard options are Mondays at 7:30 a.m., 8:30 a.m., or 9:00 p.m. Eastern. You told us your preference in the intake; the confirmed time comes with your group assignment.</div></details>
+      <details><summary>Which gathering time will we use?</summary><div class="a">The Monday times in the intake are preferences, not guaranteed options. We will do our best to accommodate your preference and confirm the gathering time once groups are set.</div></details>
       <details><summary>I have a medical condition. Should I fast?</summary><div class="a">Consult your medical professional first and adjust. Obedience is not the same as recklessness. The fasting guide will cover common adjustments.</div></details>
       <details><summary>Do I have to use makairos?</summary><div class="a">No. It is a recommendation for your one daily Scripture. Any method that gets the Word into your heart works.</div></details>
       <details><summary>What if I miss a day?</summary><div class="a">Check in honestly and keep going. Nobody is grading you. You are building a record you can trust, and your brothers are praying for you either way.</div></details>
@@ -186,11 +184,6 @@
 
 <script>
 (function(){
-  var t=new URLSearchParams(location.search).get("t");
-  var ep=(document.querySelector('meta[name="s2s-excerpt-endpoint"]')||{}).content;
-  var link=document.getElementById("excerpt-link"), note=document.getElementById("excerpt-note");
-  if(t){ link.href=ep+"?t="+encodeURIComponent(t); try{ localStorage.setItem("s2s_t",t); }catch(_){ } }
-  else { var saved=null; try{ saved=localStorage.getItem("s2s_t"); }catch(_){ } if(saved){ link.href=ep+"?t="+encodeURIComponent(saved); } else { link.addEventListener("click",function(e){ e.preventDefault(); note.style.display="block"; }); } }
   var join=(document.querySelector('meta[name="s2s-itoro-join"]')||{}).content;
   if(join){ var j=document.getElementById("join-link"); j.href=join; j.style.display=""; document.getElementById("join-note").textContent="Use the same email you used for the intake."; }
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}

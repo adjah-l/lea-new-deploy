@@ -23,3 +23,7 @@ and Kindle paths are ready.
 
 To add another book, copy one book card and add its title and file path
 to the `resources` object near the bottom of `books.html`.
+
+- `strength-to-strength-cover.jpg` and `strength-to-strength-cover-3d.png` — Strength to Strength
+  (forthcoming). Not gated here; the Books card links to `/s2s`, where the
+  Challenge intake sends the excerpt edition by email.

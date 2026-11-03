@@ -18,8 +18,6 @@
 /partner                         /partner.html                                          200
 /articles                        /articles.html                                         200
 /the-100-marriage-arranged       /the-100-marriage-arranged.html                        200
-/invite                          /request.html                                          200
-/writing                         /articles.html                                         200
 /s2s                             /s2s.html                                              200
 /s2s/intake                      /s2s-intake.html                                       200
 /s2s/hub                         /s2s-hub.html                                          200
@@ -59,6 +57,12 @@
 # --- Legacy paths -> canonical extensionless target in one hop ---
 /nivbibleaudiobook               /audiobook                                             301
 /media-1                         /media                                                 301
+/invite                          /request                                               301
+/writing                         /articles                                              301
+
+# --- S2S pretty-URL duplicates (served from s2s-*.html) collapse onto the canonical paths ---
+/s2s-hub                         /s2s/hub                                               301!
+/s2s-intake                      /s2s/intake                                            301!
 
 # --- Bio PDF: one canonical copy, all aliases forced onto it ---
 /Lawrence-Adjah-Bio.pdf          /assets/lawrence-adjah-bio.pdf                         301!
@@ -68,5 +72,8 @@
 # --- Gated books: delivered only after the required contact form ---
 /assets/resources/interpreting-his-word.pdf /404.html                                   404!
 
-# --- Legacy Squarespace host (only /s/* remains; audit before removing) ---
-/s/*                             https://lawrence-adjah.squarespace.com/s/:splat        301
+# --- Legacy Squarespace file paths: retired ---
+# Audited 2026-11-03: lawrence-adjah.squarespace.com returns 404 at its root and
+# no /s/ file is linked from this repo, so forwarding only produced a redirect to
+# a 404. Answer 410 Gone with the branded not-found page instead.
+/s/*                             /404.html                                              410

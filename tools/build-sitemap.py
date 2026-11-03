@@ -15,6 +15,10 @@ def canonical_of(path):
     m = re.search(r'<link rel="canonical" href="([^"]+)"', src)
     return m.group(1) if m else None
 
+def is_noindex(path):
+    src = open(path, encoding="utf-8").read()
+    return re.search(r'<meta name="robots" content="[^"]*noindex', src) is not None
+
 def lastmod_of(path):
     out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", path],
                          capture_output=True, text=True).stdout.strip()
@@ -24,7 +28,7 @@ def main():
     files = sorted(glob.glob("*.html")) + sorted(glob.glob("articles/*.html"))
     rows, problems = [], []
     for f in files:
-        if os.path.basename(f) in SKIP:
+        if os.path.basename(f) in SKIP or is_noindex(f):
             continue
         loc = canonical_of(f)
         if not loc:

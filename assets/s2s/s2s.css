@@ -341,3 +341,12 @@ a.guide:hover { background: var(--ink); color: var(--white); }
 .eat li { padding: 8px 0 8px 20px; position: relative; font-size: 16.5px; }
 .eat li::before { content: ""; position: absolute; left: 0; top: 18px; width: 6px; height: 6px; background: var(--stone); }
 @media (max-width: 760px) { .eats { grid-template-columns: 1fr; } }
+.about-guide .k { font-family: var(--label); font-weight: 600; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--stone-dark); margin: 0 0 18px; }
+.about-guide h2.display { font-size: clamp(40px, 6vw, 72px); margin-bottom: 26px; }
+.about-guide .author-credentials { font-family: var(--label); font-weight: 600; font-size: 14px; letter-spacing: 0.22em; text-transform: none; margin-top: 12px; }
+.about-guide .anchor { font-size: clamp(21px, 2.6vw, 30px); line-height: 1.32; border-top: 1.25px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 20px 0 22px; margin: 0 0 28px; max-width: 30em; }
+.about-guide .pics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 32px; }
+.about-guide .pics img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 20%; filter: grayscale(1); }
+.about-guide .bio { columns: 2; column-gap: 40px; }
+.about-guide .bio p { font-size: 16px; margin: 0 0 14px; break-inside: avoid; }
+@media (max-width: 760px) { .about-guide .bio { columns: 1; } .about-guide .pics { gap: 8px; } }

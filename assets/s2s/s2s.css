@@ -350,3 +350,28 @@ a.guide:hover { background: var(--ink); color: var(--white); }
 .about-guide .bio { columns: 2; column-gap: 40px; }
 .about-guide .bio p { font-size: 16px; margin: 0 0 14px; break-inside: avoid; }
 @media (max-width: 760px) { .about-guide .bio { columns: 1; } .about-guide .pics { gap: 8px; } }
+
+/* ---------- guides (spiritual strength) ---------- */
+.guide-page .k.lead { font-family: var(--label); font-weight: 600; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone-dark); margin: 0 0 12px; padding-top: 16px; border-top: 1.25px solid var(--ink); }
+.guide-page .split { margin-top: 56px; align-items: start; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+@media (max-width: 860px) { .guide-page .split { grid-template-columns: 1fr; margin-top: 40px; } }
+.pts { border: 1.25px solid var(--ink); padding: 24px 26px 22px; background: var(--white); }
+.pts .k { font-family: var(--label); font-weight: 600; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone-dark); margin: 0 0 8px; }
+.pts p { margin: 0 0 10px; }
+.pts ol { list-style: none; counter-reset: p; margin: 0 0 14px; padding: 0; }
+.pts li { counter-increment: p; display: flex; align-items: baseline; gap: 18px; padding: 11px 0; border-top: 1px solid var(--rule); font-size: 20px; line-height: 1.3; }
+.pts li::before { content: counter(p); font-family: var(--display); font-weight: 900; font-stretch: 62%; font-size: 34px; line-height: .9; color: var(--stone); min-width: 20px; }
+.pts .end { margin: 0; }
+.sched.wk td b { font-weight: 600; }
+.sched.wk th { width: 24%; vertical-align: top; } .sched.wk td { vertical-align: top; padding-right: 10px; } .sched.wk td:nth-child(2) { width: 34%; }
+.kinds { margin-top: 0; gap: 22px 28px; }
+.kinds .eat { border-top: 1px solid var(--rule); padding-top: 14px; }
+.kinds .eat h3 { font-size: 24px; margin-bottom: 6px; }
+.kinds .eat p:last-child { margin: 0; font-size: 15.5px; }
+.vs { margin: 0; padding: 0 0 0 20px; }
+.vs p { font-style: italic; font-size: 19px; line-height: 1.55; margin: 0 0 10px; }
+.vs cite { font-style: normal; font-family: var(--label); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone-dark); }
+.why { margin-top: 26px; } .why p { max-width: 40em; }
+.vs.one { margin-top: 22px; }
+.have { font-family: var(--label); font-size: 13.5px; color: var(--stone-dark); margin: 18px 0 0; max-width: 44em; }
+.about-guide .arule { border: 0; border-top: 1.25px solid var(--ink); margin: 0 0 28px; }

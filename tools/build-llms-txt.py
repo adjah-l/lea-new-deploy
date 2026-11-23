@@ -6,8 +6,11 @@ Run from the repository root:  python3 tools/build-llms-txt.py
 """
 import glob, html, re, sys
 
-ORDER = ['index.html', 'about.html', 'books.html', 'the100marriagebook.html',
+ORDER = ['index.html', 'about.html', 'books.html', 's2s.html', 'the100marriagebook.html',
          'the-100-marriage-arranged.html', 'audiobook.html', 'speaking.html',
+         'speaking-loneliness-belonging-keynote.html',
+         'speaking-christian-relationships-keynote.html',
+         'social-infrastructure-for-belonging.html', 'impact.html',
          'request.html', 'sermons.html', 'articles.html', 'projects.html',
          'partner.html', 'press.html', 'media.html']
 

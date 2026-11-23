@@ -14,6 +14,10 @@
 /media                           /media.html                                            200
 /press                           /press.html                                            200
 /speaking                        /speaking.html                                         200
+/speaking/loneliness-belonging-keynote /speaking-loneliness-belonging-keynote.html      200
+/speaking/christian-relationships-keynote /speaking-christian-relationships-keynote.html 200
+/social-infrastructure-for-belonging /social-infrastructure-for-belonging.html           200
+/impact                          /impact.html                                            200
 /request                         /request.html                                          200
 /partner                         /partner.html                                          200
 /articles                        /articles.html                                         200
@@ -35,6 +39,10 @@
 /media.html                      /media                                                 301!
 /press.html                      /press                                                 301!
 /speaking.html                   /speaking                                              301!
+/speaking-loneliness-belonging-keynote.html /speaking/loneliness-belonging-keynote       301!
+/speaking-christian-relationships-keynote.html /speaking/christian-relationships-keynote 301!
+/social-infrastructure-for-belonging.html /social-infrastructure-for-belonging           301!
+/impact.html                     /impact                                                 301!
 /request.html                    /request                                               301!
 /partner.html                    /partner                                               301!
 /articles.html                   /articles                                              301!
